@@ -7,25 +7,43 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="font-[Arial,sans-serif] text-[#222] overflow-x-hidden scroll-smooth">
-  <div class="max-w-[1400px] mx-auto p-5 max-lg:p-4 max-md:p-3 max-[480px]:p-[10px]">
-    <header class="flex justify-between items-center py-5 gap-[18px] max-md:flex-row max-md:flex-wrap max-md:items-center max-md:justify-between max-md:py-[14px] max-md:gap-3">
-      <div id="logohome" class="flex items-center gap-[10px] max-md:flex-[1_1_auto] max-md:min-w-0">
-        <a href="index.html">
-          <div class="flex items-center gap-[10px]">
-            <img src="images/logo.png" alt="Logo First Aid" class="w-10 h-10 max-[480px]:w-[34px] max-[480px]:h-[34px]">
-          </div>
+  <div class="max-w-[1400px] mx-auto p-5 pt-0 max-lg:p-4 max-lg:pt-0 max-md:p-3 max-md:pt-0 max-[480px]:p-[10px] max-[480px]:pt-0">
+    
+    <!-- Header fixo no topo (sticky) -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-[#eee] flex justify-between items-center py-3.5 gap-[18px] max-md:flex-row max-md:flex-wrap max-md:items-center max-md:justify-between max-md:py-[10px] max-md:gap-2">
+      
+      <!-- Logo [+] (Discador SAMU) + Título Fast Aid -->
+      <div id="logohome" class="flex items-center gap-[12px] max-md:flex-[1_1_auto] max-md:min-w-0">
+        <!-- Botão [+] direcionando para o SAMU 192 com subtítulo -->
+        <a href="tel:192" class="group flex flex-col items-center no-underline text-center transition-transform hover:scale-105 active:scale-95" title="Clique para ligar para o SAMU (192)">
+          <img src="images/logo.png" alt="Ligar para o SAMU 192" class="w-10 h-10 max-[480px]:w-[34px] max-[480px]:h-[34px] shadow-sm rounded-[8px]">
+          <span class="text-[10px] font-extrabold text-[#ff4d4d] uppercase tracking-tighter leading-none mt-1 group-hover:underline">SAMU 192</span>
         </a>
-        <p class="text-[22px] font-bold max-lg:text-[20px] max-md:text-[18px] max-[480px]:text-[18px]">Fast Aid</p>
+
+        <!-- Nome do site direcionando para a Homepage -->
+        <a href="index.html" class="no-underline text-[#222] hover:opacity-80 transition-opacity">
+          <p class="text-[22px] font-bold max-lg:text-[20px] max-md:text-[18px] max-[480px]:text-[17px]">Fast Aid</p>
+        </a>
       </div>
 
-      <nav id="main-nav" class="flex items-center gap-5 max-md:gap-3" aria-label="Menu principal">
+      <nav id="main-nav" class="flex items-center gap-5 max-md:gap-2" aria-label="Menu principal">
+        
+        <!-- Botão "Início" fixo na navbar (visível em Desktop e Mobile) -->
+        <a href="index.html" class="flex items-center gap-1.5 bg-[#f5f5f5] hover:bg-[#eaeaea] text-[#222] font-medium px-3 py-2 rounded-[8px] no-underline text-sm transition-colors" title="Ir para a página inicial">
+          <svg class="w-4 h-4 text-[#ff4d4d] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+          </svg>
+          <span>Início</span>
+        </a>
+
+        <!-- Links secundários (ocultos no mobile) -->
         <div class="flex items-center gap-5 max-md:hidden">
-          <a href="index.html" class="no-underline text-[#333] text-base">Início</a>
-          <a href="#" class="no-underline text-[#333] text-base">Sobre</a>
-          <a href="#" class="no-underline text-[#333] text-base">Contato</a>
-          <a href="cadastro.html" id="navCadastro" class="ml-auto bg-[#ff4d4d] text-white px-[14px] py-2 rounded-[8px] no-underline text-base">Cadastrar-se</a>
-          <a href="login.html" id="navLogin" class="no-underline text-[#333] text-base">Fazer login</a>
+          <a href="#" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Sobre</a>
+          <a href="#" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Contato</a>
+          <a href="cadastro.html" id="navCadastro" class="ml-auto bg-[#ff4d4d] hover:bg-[#e63e3e] text-white px-[14px] py-2 rounded-[8px] no-underline text-base transition-colors">Cadastrar-se</a>
+          <a href="login.html" id="navLogin" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Fazer login</a>
         </div>
+
         <div id="navProfile" class="hidden relative max-md:hidden">
           <button id="profileTrigger" class="flex items-center gap-2 cursor-pointer bg-transparent border-none p-0">
             <img id="profilePic" src="" alt="Foto de perfil" class="w-9 h-9 rounded-full object-cover border-2 border-[#ff4d4d] hover:opacity-80 transition-opacity">
@@ -43,7 +61,8 @@
             </button>
           </div>
         </div>
-        <button id="mobileMenuBtn" class="hidden max-md:flex flex-col gap-[4px] p-1 bg-transparent border-none cursor-pointer" aria-label="Abrir menu">
+
+        <button id="mobileMenuBtn" class="hidden max-md:flex flex-col gap-[4px] p-1.5 bg-transparent border-none cursor-pointer" aria-label="Abrir menu">
           <span class="block w-6 h-[2.5px] bg-[#333] rounded-full"></span>
           <span class="block w-6 h-[2.5px] bg-[#333] rounded-full"></span>
           <span class="block w-6 h-[2.5px] bg-[#333] rounded-full"></span>
@@ -51,6 +70,7 @@
       </nav>
     </header>
 
+    <!-- Menu Mobile -->
     <div id="mobileMenu" class="hidden fixed inset-0 z-50">
       <div id="mobileMenuBackdrop" class="absolute inset-0 bg-black/50"></div>
       <div class="absolute top-0 right-0 w-[280px] h-full bg-white shadow-lg p-6 pt-16">
@@ -60,7 +80,7 @@
           </svg>
         </button>
         <div class="flex flex-col gap-4">
-          <a href="index.html" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Início</a>
+          <a href="index.html" class="no-underline text-[#333] font-bold text-base py-2 border-b border-[#eee]">Início</a>
           <a href="#" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Sobre</a>
           <a href="#" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Contato</a>
           <a href="cadastro.html" id="navCadastroMobile" class="bg-[#ff4d4d] text-white px-[14px] py-[10px] rounded-[8px] no-underline text-base text-center mt-2">Cadastrar-se</a>
@@ -176,7 +196,7 @@
       <img src="images/logo.png" alt="Logo First Aid" class="w-[120px] h-[120px] -mt-[5px] max-lg:w-[95px] max-lg:h-[95px] max-md:mx-auto max-md:mb-2">
       <div class="max-md:w-full max-md:py-[14px]">
         <strong id="titulofooter" class="text-[22px] font-bold max-md:text-[20px]">Fast Aid</strong>
-        <div class="max-w-[420px] mt-[6px] text-[#555] max-md:mx-auto">Informações básicas sobre primeiros socorros. Em caso de emergência, ligue 192 (SAMU).</div>
+        <div class="max-w-[420px] mt-[6px] text-[#555] max-md:mx-auto">Informações básicas sobre primeiros socorros. Em caso de emergência, ligue <a href="tel:192" class="text-[#ff4d4d] font-bold underline">192 (SAMU)</a>.</div>
       </div>
 
       <div class="justify-self-end text-right max-md:justify-self-center max-md:text-center max-md:w-full max-md:py-[14px] max-md:border-t border-[#e8e8e8]">
