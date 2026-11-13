@@ -6,29 +6,25 @@
   <title>Fast Aid — Aprenda primeiros socorros</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="font-[Arial,sans-serif] text-[#222] overflow-x-hidden scroll-smooth">
+<body class="font-[Arial,sans-serif] text-[#222] overflow-x-hidden scroll-smooth pb-24">
   <div class="max-w-[1400px] mx-auto p-5 pt-0 max-lg:p-4 max-lg:pt-0 max-md:p-3 max-md:pt-0 max-[480px]:p-[10px] max-[480px]:pt-0">
     
-    <!-- Header fixo no topo (sticky) -->
+    <!-- Header fixo no topo (sticky) sem Login/Cadastro -->
     <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-[#eee] flex justify-between items-center py-3.5 gap-[18px] max-md:flex-row max-md:flex-wrap max-md:items-center max-md:justify-between max-md:py-[10px] max-md:gap-2">
       
       <!-- Logo [+] (Discador SAMU) + Título Fast Aid -->
       <div id="logohome" class="flex items-center gap-[12px] max-md:flex-[1_1_auto] max-md:min-w-0">
-        <!-- Botão [+] direcionando para o SAMU 192 com subtítulo -->
         <a href="tel:192" class="group flex flex-col items-center no-underline text-center transition-transform hover:scale-105 active:scale-95" title="Clique para ligar para o SAMU (192)">
           <img src="images/logo.png" alt="Ligar para o SAMU 192" class="w-10 h-10 max-[480px]:w-[34px] max-[480px]:h-[34px] shadow-sm rounded-[8px]">
           <span class="text-[10px] font-extrabold text-[#ff4d4d] uppercase tracking-tighter leading-none mt-1 group-hover:underline">SAMU 192</span>
         </a>
 
-        <!-- Nome do site direcionando para a Homepage -->
         <a href="index.html" class="no-underline text-[#222] hover:opacity-80 transition-opacity">
           <p class="text-[22px] font-bold max-lg:text-[20px] max-md:text-[18px] max-[480px]:text-[17px]">Fast Aid</p>
         </a>
       </div>
 
       <nav id="main-nav" class="flex items-center gap-5 max-md:gap-2" aria-label="Menu principal">
-        
-        <!-- Botão "Início" fixo na navbar (visível em Desktop e Mobile) -->
         <a href="index.html" class="flex items-center gap-1.5 bg-[#f5f5f5] hover:bg-[#eaeaea] text-[#222] font-medium px-3 py-2 rounded-[8px] no-underline text-sm transition-colors" title="Ir para a página inicial">
           <svg class="w-4 h-4 text-[#ff4d4d] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
@@ -36,30 +32,10 @@
           <span>Início</span>
         </a>
 
-        <!-- Links secundários (ocultos no mobile) -->
         <div class="flex items-center gap-5 max-md:hidden">
-          <a href="#" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Sobre</a>
-          <a href="#" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Contato</a>
-          <a href="cadastro.html" id="navCadastro" class="ml-auto bg-[#ff4d4d] hover:bg-[#e63e3e] text-white px-[14px] py-2 rounded-[8px] no-underline text-base transition-colors">Cadastrar-se</a>
-          <a href="login.html" id="navLogin" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Fazer login</a>
-        </div>
-
-        <div id="navProfile" class="hidden relative max-md:hidden">
-          <button id="profileTrigger" class="flex items-center gap-2 cursor-pointer bg-transparent border-none p-0">
-            <img id="profilePic" src="" alt="Foto de perfil" class="w-9 h-9 rounded-full object-cover border-2 border-[#ff4d4d] hover:opacity-80 transition-opacity">
-            <svg class="w-4 h-4 text-[#333] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-          <div id="profileDropdown" class="hidden absolute right-0 top-full mt-2 w-56 bg-white rounded-[12px] shadow-[0_8px_24px_rgba(0,0,0,0.12)] border border-[#eee] py-2 z-50">
-            <div class="px-4 py-2 text-sm text-[#555] border-b border-[#eee]" id="profileEmail"></div>
-            <button id="logoutBtn" class="w-full text-left px-4 py-2 text-sm text-[#ff4d4d] hover:bg-[#fff5f5] transition-colors flex items-center gap-2 cursor-pointer bg-transparent border-none">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
-              </svg>
-              Sair
-            </button>
-          </div>
+          <a href="#emergencias" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Emergências</a>
+          <a href="#como-funciona" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Como funciona</a>
+          <a href="#contato" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Contato</a>
         </div>
 
         <button id="mobileMenuBtn" class="hidden max-md:flex flex-col gap-[4px] p-1.5 bg-transparent border-none cursor-pointer" aria-label="Abrir menu">
@@ -70,7 +46,7 @@
       </nav>
     </header>
 
-    <!-- Menu Mobile -->
+    <!-- Menu Mobile sem Login/Cadastro -->
     <div id="mobileMenu" class="hidden fixed inset-0 z-50">
       <div id="mobileMenuBackdrop" class="absolute inset-0 bg-black/50"></div>
       <div class="absolute top-0 right-0 w-[280px] h-full bg-white shadow-lg p-6 pt-16">
@@ -81,25 +57,15 @@
         </button>
         <div class="flex flex-col gap-4">
           <a href="index.html" class="no-underline text-[#333] font-bold text-base py-2 border-b border-[#eee]">Início</a>
-          <a href="#" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Sobre</a>
-          <a href="#" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Contato</a>
-          <a href="cadastro.html" id="navCadastroMobile" class="bg-[#ff4d4d] text-white px-[14px] py-[10px] rounded-[8px] no-underline text-base text-center mt-2">Cadastrar-se</a>
-          <a href="login.html" id="navLoginMobile" class="no-underline text-[#333] text-base py-2 text-center">Fazer login</a>
-          <div id="navProfileMobile" class="hidden flex-col gap-3 pt-4 mt-4 border-t border-[#eee]">
-            <div class="flex items-center gap-3 px-1">
-              <img id="profilePicMobile" src="" alt="" class="w-10 h-10 rounded-full object-cover border-2 border-[#ff4d4d]">
-              <span id="profileEmailMobile" class="text-sm text-[#555] truncate"></span>
-            </div>
-            <button id="logoutBtnMobile" class="w-full text-left px-3 py-2.5 text-sm text-[#ff4d4d] hover:bg-[#fff5f5] rounded-[8px] flex items-center gap-2 cursor-pointer bg-transparent border-none">
-              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
-              </svg>
-              Sair
-            </button>
-          </div>
+          <a href="#emergencias" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Emergências</a>
+          <a href="#como-funciona" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Como funciona</a>
+          <a href="#contato" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Contato</a>
         </div>
       </div>
     </div>
+
+    <!-- Box de Localização GPS (Aparece ao clicar em "Onde Estou?") -->
+    <div id="box-localizacao" class="hidden my-4 p-4 rounded-xl bg-amber-50 border border-amber-300 text-center text-[#222] text-sm shadow-sm"></div>
 
     <main>
       <section class="flex items-center justify-between py-[60px] gap-[30px] max-lg:flex-col max-lg:items-start max-lg:py-[45px] max-md:py-[30px] max-md:gap-5" aria-labelledby="hero-heading">
@@ -117,57 +83,59 @@
       <section id="emergencias" class="py-[60px] max-md:py-10">
         <h2 class="text-[32px] mb-6 max-md:text-[26px]">Emergências em Destaque</h2>
 
+        <!-- Todos os 8 cards agora são clicáveis e funcionais -->
         <div class="grid grid-cols-4 gap-5 mb-10 max-lg:grid-cols-2 max-md:grid-cols-1 max-md:gap-[14px] max-md:justify-items-center">
-          <article class="bg-white rounded-[12px] p-5 border border-[#eee] text-left transition-[0.25s_ease] cursor-pointer max-lg:w-full max-md:w-full max-md:max-w-[360px] max-md:text-center max-[480px]:p-4 hover:-translate-y-[6px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.08)]">
-            <img class="w-[55px] text-[30px] mb-[10px] max-md:mx-auto max-md:mb-[10px]" src="images/rcp.png" alt="">
-            <h3 class="text-[20px] mb-[6px]">RCP</h3>
-            <a href="rcp.html" class="text-[15px] text-[#ff4d4d] no-underline">Ver mais</a>
+          
+          <article onclick="window.location.href='rcp.html'" class="bg-white rounded-[12px] p-5 border border-[#eee] text-left transition-[0.25s_ease] cursor-pointer max-lg:w-full max-md:w-full max-md:max-w-[360px] max-md:text-center max-[480px]:p-4 hover:-translate-y-[6px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.08)]">
+            <img class="w-[55px] text-[30px] mb-[10px] max-md:mx-auto max-md:mb-[10px]" src="images/rcp.png" alt="RCP">
+            <h3 class="text-[20px] font-bold mb-[6px]">RCP</h3>
+            <a href="rcp.html" class="text-[15px] text-[#ff4d4d] font-semibold no-underline">Ver mais ›</a>
           </article>
 
-          <article class="bg-white rounded-[12px] p-5 border border-[#eee] text-left transition-[0.25s_ease] cursor-pointer max-lg:w-full max-md:w-full max-md:max-w-[360px] max-md:text-center max-[480px]:p-4 hover:-translate-y-[6px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.08)]">
-            <img class="w-[55px] text-[30px] mb-[10px] max-md:mx-auto max-md:mb-[10px]" src="images/convulsao.png" alt="">
-            <h3 class="text-[20px] mb-[6px]">Convulsão</h3>
-            <a href="convulsao.html" class="text-[15px] text-[#ff4d4d] no-underline">Ver mais</a>
+          <article onclick="window.location.href='convulsao.html'" class="bg-white rounded-[12px] p-5 border border-[#eee] text-left transition-[0.25s_ease] cursor-pointer max-lg:w-full max-md:w-full max-md:max-w-[360px] max-md:text-center max-[480px]:p-4 hover:-translate-y-[6px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.08)]">
+            <img class="w-[55px] text-[30px] mb-[10px] max-md:mx-auto max-md:mb-[10px]" src="images/convulsao.png" alt="Convulsão">
+            <h3 class="text-[20px] font-bold mb-[6px]">Convulsão</h3>
+            <a href="convulsao.html" class="text-[15px] text-[#ff4d4d] font-semibold no-underline">Ver mais ›</a>
           </article>
 
-          <article class="bg-white rounded-[12px] p-5 border border-[#eee] text-left transition-[0.25s_ease] cursor-pointer max-lg:w-full max-md:w-full max-md:max-w-[360px] max-md:text-center max-[480px]:p-4 hover:-translate-y-[6px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.08)]">
-            <img class="w-[55px] text-[30px] mb-[10px] max-md:mx-auto max-md:mb-[10px]" src="images/queimadura.png" alt="">
-            <h3 class="text-[20px] mb-[6px]">Queimaduras</h3>
-            <a href="#" class="text-[15px] text-[#ff4d4d] no-underline">Ver mais</a>
+          <article onclick="window.location.href='emergencia.html?tipo=queimaduras'" class="bg-white rounded-[12px] p-5 border border-[#eee] text-left transition-[0.25s_ease] cursor-pointer max-lg:w-full max-md:w-full max-md:max-w-[360px] max-md:text-center max-[480px]:p-4 hover:-translate-y-[6px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.08)]">
+            <img class="w-[55px] text-[30px] mb-[10px] max-md:mx-auto max-md:mb-[10px]" src="images/queimadura.png" alt="Queimaduras">
+            <h3 class="text-[20px] font-bold mb-[6px]">Queimaduras</h3>
+            <a href="emergencia.html?tipo=queimaduras" class="text-[15px] text-[#ff4d4d] font-semibold no-underline">Ver mais ›</a>
           </article>
 
-          <article class="bg-white rounded-[12px] p-5 border border-[#eee] text-left transition-[0.25s_ease] cursor-pointer max-lg:w-full max-md:w-full max-md:max-w-[360px] max-md:text-center max-[480px]:p-4 hover:-translate-y-[6px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.08)]">
-            <img class="w-[55px] text-[30px] mb-[10px] max-md:mx-auto max-md:mb-[10px]" src="images/traumas.png" alt="">
-            <h3 class="text-[20px] mb-[6px]">Traumas</h3>
-            <a href="#" class="text-[15px] text-[#ff4d4d] no-underline">Ver mais</a>
+          <article onclick="window.location.href='emergencia.html?tipo=traumas'" class="bg-white rounded-[12px] p-5 border border-[#eee] text-left transition-[0.25s_ease] cursor-pointer max-lg:w-full max-md:w-full max-md:max-w-[360px] max-md:text-center max-[480px]:p-4 hover:-translate-y-[6px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.08)]">
+            <img class="w-[55px] text-[30px] mb-[10px] max-md:mx-auto max-md:mb-[10px]" src="images/traumas.png" alt="Traumas">
+            <h3 class="text-[20px] font-bold mb-[6px]">Traumas</h3>
+            <a href="emergencia.html?tipo=traumas" class="text-[15px] text-[#ff4d4d] font-semibold no-underline">Ver mais ›</a>
           </article>
 
-          <article class="bg-white rounded-[12px] p-5 border border-[#eee] text-left transition-[0.25s_ease] cursor-pointer max-lg:w-full max-md:w-full max-md:max-w-[360px] max-md:text-center max-[480px]:p-4 hover:-translate-y-[6px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.08)]">
-            <img class="w-[55px] text-[30px] mb-[10px] max-md:mx-auto max-md:mb-[10px]" src="images/cortesesangramentos.png" alt="">
-            <h3 class="text-[20px] mb-[6px]">Cortes e Sangramentos</h3>
-            <a href="#" class="text-[15px] text-[#ff4d4d] no-underline">Ver mais</a>
+          <article onclick="window.location.href='emergencia.html?tipo=cortes'" class="bg-white rounded-[12px] p-5 border border-[#eee] text-left transition-[0.25s_ease] cursor-pointer max-lg:w-full max-md:w-full max-md:max-w-[360px] max-md:text-center max-[480px]:p-4 hover:-translate-y-[6px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.08)]">
+            <img class="w-[55px] text-[30px] mb-[10px] max-md:mx-auto max-md:mb-[10px]" src="images/cortesesangramentos.png" alt="Cortes e Sangramentos">
+            <h3 class="text-[20px] font-bold mb-[6px]">Cortes e Sangramentos</h3>
+            <a href="emergencia.html?tipo=cortes" class="text-[15px] text-[#ff4d4d] font-semibold no-underline">Ver mais ›</a>
           </article>
 
-          <article class="bg-white rounded-[12px] p-5 border border-[#eee] text-left transition-[0.25s_ease] cursor-pointer max-lg:w-full max-md:w-full max-md:max-w-[360px] max-md:text-center max-[480px]:p-4 hover:-translate-y-[6px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.08)]">
-            <img class="w-[55px] text-[30px] mb-[10px] max-md:mx-auto max-md:mb-[10px]" src="images/choqueeletrico.png" alt="">
-            <h3 class="text-[20px] mb-[6px]">Choque Elétrico</h3>
-            <a href="#" class="text-[15px] text-[#ff4d4d] no-underline">Ver mais</a>
+          <article onclick="window.location.href='emergencia.html?tipo=choque'" class="bg-white rounded-[12px] p-5 border border-[#eee] text-left transition-[0.25s_ease] cursor-pointer max-lg:w-full max-md:w-full max-md:max-w-[360px] max-md:text-center max-[480px]:p-4 hover:-translate-y-[6px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.08)]">
+            <img class="w-[55px] text-[30px] mb-[10px] max-md:mx-auto max-md:mb-[10px]" src="images/choqueeletrico.png" alt="Choque Elétrico">
+            <h3 class="text-[20px] font-bold mb-[6px]">Choque Elétrico</h3>
+            <a href="emergencia.html?tipo=choque" class="text-[15px] text-[#ff4d4d] font-semibold no-underline">Ver mais ›</a>
           </article>
 
-          <article class="bg-white rounded-[12px] p-5 border border-[#eee] text-left transition-[0.25s_ease] cursor-pointer max-lg:w-full max-md:w-full max-md:max-w-[360px] max-md:text-center max-[480px]:p-4 hover:-translate-y-[6px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.08)]">
-            <img class="w-[55px] text-[30px] mb-[10px] max-md:mx-auto max-md:mb-[10px]" src="images/afogamento.png" alt="">
-            <h3 id="c7" class="text-[20px] mb-[6px]">Afogamento</h3>
-            <a href="#" class="text-[15px] text-[#ff4d4d] no-underline">Ver mais</a>
+          <article onclick="window.location.href='emergencia.html?tipo=afogamento'" class="bg-white rounded-[12px] p-5 border border-[#eee] text-left transition-[0.25s_ease] cursor-pointer max-lg:w-full max-md:w-full max-md:max-w-[360px] max-md:text-center max-[480px]:p-4 hover:-translate-y-[6px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.08)]">
+            <img class="w-[55px] text-[30px] mb-[10px] max-md:mx-auto max-md:mb-[10px]" src="images/afogamento.png" alt="Afogamento">
+            <h3 id="c7" class="text-[20px] font-bold mb-[6px]">Afogamento</h3>
+            <a href="emergencia.html?tipo=afogamento" class="text-[15px] text-[#ff4d4d] font-semibold no-underline">Ver mais ›</a>
           </article>
 
-          <article class="bg-white rounded-[12px] p-5 border border-[#eee] text-left transition-[0.25s_ease] cursor-pointer max-lg:w-full max-md:w-full max-md:max-w-[360px] max-md:text-center max-[480px]:p-4 hover:-translate-y-[6px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.08)]" role="listitem" aria-labelledby="c2">
-            <img class="w-[55px] text-[30px] mb-[10px] max-md:mx-auto max-md:mb-[10px]" src="images/desmaio.png" alt="">
-            <h3 id="c8" class="text-[20px] mb-[6px]">Desmaio</h3>
-            <a href="#" class="text-[15px] text-[#ff4d4d] no-underline">Ver mais</a>
+          <article onclick="window.location.href='emergencia.html?tipo=desmaio'" class="bg-white rounded-[12px] p-5 border border-[#eee] text-left transition-[0.25s_ease] cursor-pointer max-lg:w-full max-md:w-full max-md:max-w-[360px] max-md:text-center max-[480px]:p-4 hover:-translate-y-[6px] hover:shadow-[0_10px_25px_rgba(0,0,0,0.08)]" role="listitem" aria-labelledby="c8">
+            <img class="w-[55px] text-[30px] mb-[10px] max-md:mx-auto max-md:mb-[10px]" src="images/desmaio.png" alt="Desmaio">
+            <h3 id="c8" class="text-[20px] font-bold mb-[6px]">Desmaio</h3>
+            <a href="emergencia.html?tipo=desmaio" class="text-[15px] text-[#ff4d4d] font-semibold no-underline">Ver mais ›</a>
           </article>
         </div>
 
-        <div class="mt-9">
+        <div id="como-funciona" class="mt-9">
           <h2 class="text-[32px] mb-6 max-md:text-[26px]">Como funciona?</h2>
           <div class="flex gap-10 mt-5 flex-wrap justify-center max-lg:gap-5 max-md:flex-col max-md:gap-4">
             <div class="text-center w-[180px] max-lg:w-[calc(50%-10px)] max-lg:min-w-[220px] max-md:w-full max-md:min-w-0">
@@ -192,7 +160,7 @@
       </section>
     </main>
 
-    <footer class="grid grid-cols-[auto_1fr_auto] items-center gap-[30px] mt-[60px] p-6 max-lg:gap-5 max-md:mt-10 max-md:flex max-md:flex-col max-md:text-center max-md:gap-0">
+    <footer id="contato" class="grid grid-cols-[auto_1fr_auto] items-center gap-[30px] mt-[60px] p-6 max-lg:gap-5 max-md:mt-10 max-md:flex max-md:flex-col max-md:text-center max-md:gap-0">
       <img src="images/logo.png" alt="Logo First Aid" class="w-[120px] h-[120px] -mt-[5px] max-lg:w-[95px] max-lg:h-[95px] max-md:mx-auto max-md:mb-2">
       <div class="max-md:w-full max-md:py-[14px]">
         <strong id="titulofooter" class="text-[22px] font-bold max-md:text-[20px]">Fast Aid</strong>
@@ -200,7 +168,7 @@
       </div>
 
       <div class="justify-self-end text-right max-md:justify-self-center max-md:text-center max-md:w-full max-md:py-[14px] max-md:border-t border-[#e8e8e8]">
-        <a href="#" class="text-[#ff4d4d] no-underline hover:underline">fastaid@gmail.com</a>
+        <a href="mailto:fastaid@gmail.com" class="text-[#ff4d4d] no-underline hover:underline">fastaid@gmail.com</a>
         <div class="flex gap-5 mt-[10px] justify-end max-lg:justify-start max-md:justify-center">
           <a class="w-12 h-12 bg-[#ff4d4d] text-white flex items-center justify-center rounded-[12px] text-[22px] transition-[0.3s_ease] hover:scale-[1.08]" href="#">
             <img src="images/logoinsta.png" alt="logo instagram" class="w-[38px]">
@@ -212,6 +180,20 @@
       </div>
     </footer>
   </div>
+
+  <!-- Barra Flutuante de Socorro Rápido -->
+  <div class="fixed bottom-0 left-0 w-full bg-white/95 backdrop-blur-md shadow-[0_-4px_12px_rgba(0,0,0,0.12)] border-t border-[#eee] flex justify-around items-center p-2.5 z-50 gap-2 max-w-full">
+    <a href="tel:192" class="flex-1 max-w-[220px] flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg font-extrabold text-sm sm:text-base no-underline text-white bg-[#d90429] hover:bg-[#b80322] active:scale-95 transition-all text-center">
+      📞 SAMU 192
+    </a>
+    <a href="tel:193" class="flex-1 max-w-[220px] flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg font-extrabold text-sm sm:text-base no-underline text-white bg-[#ef233c] hover:bg-[#d90429] active:scale-95 transition-all text-center">
+      🚒 Bombeiros 193
+    </a>
+    <button onclick="obterLocalizacaoEmergencia('box-localizacao')" class="flex-1 max-w-[220px] bg-[#2b2d42] hover:bg-[#1e2030] text-white border-none py-2.5 px-3 rounded-lg font-bold text-sm sm:text-base cursor-pointer active:scale-95 transition-all">
+      📍 Onde Estou?
+    </button>
+  </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var btn = document.getElementById('mobileMenuBtn');
@@ -224,6 +206,6 @@
       if (backdrop) backdrop.addEventListener('click', function() { menu.classList.add('hidden'); });
     });
   </script>
-  <script src="scripts/auth.js" defer></script>
+  <script src="scripts/emergencia.js"></script>
 </body>
 </html>

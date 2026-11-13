@@ -6,27 +6,35 @@
   <title>RCP - Fast Aid</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="font-[Arial,sans-serif] text-[#222] overflow-x-hidden scroll-smooth">
-  <div class="max-w-[1400px] mx-auto p-5 max-lg:p-4 max-md:p-3 max-[480px]:p-[10px]">
-    <header class="flex justify-between items-center py-5 gap-[18px] max-md:flex-row max-md:flex-wrap max-md:items-center max-md:justify-between max-md:py-[14px] max-md:gap-3">
-      <div class="flex items-center gap-[10px] max-md:flex-[1_1_auto] max-md:min-w-0">
-        <a href="index.html">
-          <div class="flex items-center gap-[10px]">
-            <img src="images/logo.png" alt="Logo First Aid" class="w-10 h-10 max-[480px]:w-[34px] max-[480px]:h-[34px]">
-          </div>
+<body class="font-[Arial,sans-serif] text-[#222] overflow-x-hidden scroll-smooth pb-24">
+  <div class="max-w-[1400px] mx-auto p-5 pt-0 max-lg:p-4 max-lg:pt-0 max-md:p-3 max-md:pt-0 max-[480px]:p-[10px] max-[480px]:pt-0">
+    
+    <!-- Header fixo padronizado sem Login/Cadastro -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-[#eee] flex justify-between items-center py-3.5 gap-[18px] max-md:flex-row max-md:flex-wrap max-md:items-center max-md:justify-between max-md:py-[10px] max-md:gap-2">
+      <div class="flex items-center gap-[12px] max-md:flex-[1_1_auto] max-md:min-w-0">
+        <a href="tel:192" class="group flex flex-col items-center no-underline text-center transition-transform hover:scale-105 active:scale-95" title="Clique para ligar para o SAMU (192)">
+          <img src="images/logo.png" alt="Ligar para o SAMU 192" class="w-10 h-10 max-[480px]:w-[34px] max-[480px]:h-[34px] shadow-sm rounded-[8px]">
+          <span class="text-[10px] font-extrabold text-[#ff4d4d] uppercase tracking-tighter leading-none mt-1 group-hover:underline">SAMU 192</span>
         </a>
-        <p class="text-[22px] font-bold max-lg:text-[20px] max-md:text-[18px] max-[480px]:text-[18px]">Fast Aid</p>
+        <a href="index.html" class="no-underline text-[#222] hover:opacity-80 transition-opacity">
+          <p class="text-[22px] font-bold max-lg:text-[20px] max-md:text-[18px] max-[480px]:text-[17px]">Fast Aid</p>
+        </a>
       </div>
 
-      <nav class="flex items-center gap-5 max-md:gap-3">
+      <nav class="flex items-center gap-5 max-md:gap-2" aria-label="Menu principal">
+        <a href="index.html" class="flex items-center gap-1.5 bg-[#f5f5f5] hover:bg-[#eaeaea] text-[#222] font-medium px-3 py-2 rounded-[8px] no-underline text-sm transition-colors" title="Voltar para a página inicial">
+          <svg class="w-4 h-4 text-[#ff4d4d] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+          </svg>
+          <span>Início</span>
+        </a>
+
         <div class="flex items-center gap-5 max-md:hidden">
-          <a href="index.html" class="no-underline text-[#333] text-base">Início</a>
-          <a href="#" class="no-underline text-[#333] text-base">Sobre</a>
-          <a href="#" class="no-underline text-[#333] text-base">Contato</a>
-          <a href="cadastro.html" class="ml-auto bg-[#ff4d4d] text-white px-[14px] py-2 rounded-[8px] no-underline text-base">Cadastrar-se</a>
-          <a href="login.html" class="no-underline text-[#333] text-base">Fazer login</a>
+          <a href="index.html#emergencias" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Emergências</a>
+          <a href="convulsao.html" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Convulsão</a>
         </div>
-        <button id="mobileMenuBtn" class="hidden max-md:flex flex-col gap-[4px] p-1 bg-transparent border-none cursor-pointer" aria-label="Abrir menu">
+
+        <button id="mobileMenuBtn" class="hidden max-md:flex flex-col gap-[4px] p-1.5 bg-transparent border-none cursor-pointer" aria-label="Abrir menu">
           <span class="block w-6 h-[2.5px] bg-[#333] rounded-full"></span>
           <span class="block w-6 h-[2.5px] bg-[#333] rounded-full"></span>
           <span class="block w-6 h-[2.5px] bg-[#333] rounded-full"></span>
@@ -34,6 +42,7 @@
       </nav>
     </header>
 
+    <!-- Menu Mobile sem Login/Cadastro -->
     <div id="mobileMenu" class="hidden fixed inset-0 z-50">
       <div id="mobileMenuBackdrop" class="absolute inset-0 bg-black/50"></div>
       <div class="absolute top-0 right-0 w-[280px] h-full bg-white shadow-lg p-6 pt-16">
@@ -43,74 +52,106 @@
           </svg>
         </button>
         <div class="flex flex-col gap-4">
-          <a href="index.html" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Início</a>
-          <a href="#" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Sobre</a>
-          <a href="#" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Contato</a>
-          <a href="cadastro.html" class="bg-[#ff4d4d] text-white px-[14px] py-[10px] rounded-[8px] no-underline text-base text-center mt-2">Cadastrar-se</a>
-          <a href="login.html" class="no-underline text-[#333] text-base py-2 text-center">Fazer login</a>
+          <a href="index.html" class="no-underline text-[#333] font-bold text-base py-2 border-b border-[#eee]">Início</a>
+          <a href="index.html#emergencias" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Todas as Emergências</a>
+          <a href="convulsao.html" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Guia de Convulsão</a>
         </div>
       </div>
     </div>
 
+    <!-- Box de Localização GPS (Aparece ao clicar em "Onde Estou?") -->
+    <div id="box-localizacao" class="hidden my-4 p-4 rounded-xl bg-amber-50 border border-amber-300 text-center text-[#222] text-sm shadow-sm"></div>
+
     <div class="text-center mt-[25px] mb-[10px] flex justify-center items-center">
-      <img src="images/rcp.png" class="w-[120px] m-[30px] -mb-5 max-md:w-[95px] max-md:m-[22px] max-md:-mb-[10px]">
+      <img src="images/rcp.png" class="w-[120px] m-[30px] -mb-5 max-md:w-[95px] max-md:m-[22px] max-md:-mb-[10px]" alt="Ícone RCP">
     </div>
 
     <section class="max-w-[900px] mx-auto py-10 px-5 text-center max-md:py-[30px] max-md:px-3">
-      <h1 class="text-[32px] mb-[10px] max-lg:text-[27px] max-md:text-2xl">RCP – Reanimação Cardiopulmonar</h1>
-      <p class="text-base mb-[35px] text-[#555] max-md:text-[15px] max-md:mb-[22px]">Siga o passo a passo abaixo:</p>
+      <h1 class="text-[32px] mb-[10px] max-lg:text-[27px] max-md:text-2xl font-bold">RCP – Reanimação Cardiopulmonar</h1>
+      <p class="text-base mb-[25px] text-[#555] max-md:text-[15px]">Siga o passo a passo abaixo:</p>
 
-      <div class="flex flex-col gap-[22px] max-md:gap-4">
+      <!-- PAINEL INTERATIVO: METRÔNOMO DE RCP + LEITOR DE VOZ -->
+      <div class="bg-[#f8f9fa] border-l-4 border-[#d90429] p-4 mb-7 rounded-lg shadow-sm flex flex-wrap items-center justify-between gap-4 text-left max-md:flex-col max-md:text-center">
+        <div>
+          <strong class="text-lg text-[#222]">Suporte de Ritmo e Voz (Mãos Livres)</strong>
+          <p class="text-sm text-[#555] mt-1">Comprima o centro do peito forte e rápido seguindo o bip sonoro.</p>
+        </div>
+        <div class="flex gap-2.5 flex-wrap justify-center">
+          <button onclick="alternarMetronomoRCP(this)" class="bg-[#d90429] hover:bg-[#b80322] text-white border-none py-2.5 px-4 rounded-lg text-sm font-bold cursor-pointer transition-transform">
+            🥁 Iniciar Ritmo (110 BPM)
+          </button>
+          <button onclick="lerInstrucoesPagina('#passos-rcp', this)" class="bg-[#2b2d42] hover:bg-[#1e2030] text-white border-none py-2.5 px-4 rounded-lg text-sm font-bold cursor-pointer transition-colors">
+            🔊 Ouvir Instruções
+          </button>
+        </div>
+      </div>
+
+      <!-- LISTA DE PASSOS -->
+      <div id="passos-rcp" class="flex flex-col gap-[22px] max-md:gap-4">
         <div class="bg-white rounded-[12px] p-[18px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] text-left flex gap-5 items-center max-md:flex-col max-md:items-center max-md:text-center max-md:gap-3 max-md:p-4">
           <img src="images/rcp1.png" class="w-20 max-md:w-[90px] max-[480px]:w-[76px]" alt="Verificar consciência">
           <div>
-            <h3 class="text-[20px] mb-[6px]">1. Verifique a consciência</h3>
-            <p class="text-[#444]">Bata levemente nos ombros da pessoa e pergunte: "Você está bem?".</p>
+            <h3 class="text-[20px] font-bold mb-[6px]">1. Verifique a consciência</h3>
+            <p class="text-[#444]">Bata levemente nos ombros da pessoa e pergunte em voz alta: "Você está bem?".</p>
           </div>
         </div>
 
         <div class="bg-white rounded-[12px] p-[18px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] text-left flex gap-5 items-center max-md:flex-col max-md:items-center max-md:text-center max-md:gap-3 max-md:p-4">
           <img src="images/rcp2.png" class="w-20 max-md:w-[90px] max-[480px]:w-[76px]" alt="Chamar ajuda">
           <div>
-            <h3 class="text-[20px] mb-[6px]">2. Acione ajuda imediatamente</h3>
-            <p class="text-[#444]">Ligue 192 ou peça para alguém ligar. Quanto mais rápido, maiores as chances de sobrevivência.</p>
+            <h3 class="text-[20px] font-bold mb-[6px]">2. Acione ajuda imediatamente</h3>
+            <p class="text-[#444]">Ligue 192 (botão vermelho abaixo) ou peça para alguém ligar e buscar um desfibrilador (DEA).</p>
           </div>
         </div>
 
         <div class="bg-white rounded-[12px] p-[18px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] text-left flex gap-5 items-center max-md:flex-col max-md:items-center max-md:text-center max-md:gap-3 max-md:p-4">
           <img src="images/rcp3.png" class="w-20 max-md:w-[90px] max-[480px]:w-[76px]" alt="Abrir vias aéreas">
           <div>
-            <h3 class="text-[20px] mb-[6px]">3. Abra as vias aéreas e verifique se a pessoa está respirando</h3>
-            <p class="text-[#444]">Incline a cabeça para trás e levante o queixo delicadamente. Observe o peito, aproxime o ouvido e sinta a respiração por no máximo 10 segundos.</p>
+            <h3 class="text-[20px] font-bold mb-[6px]">3. Abra as vias aéreas e cheque a respiração</h3>
+            <p class="text-[#444]">Incline a cabeça para trás e levante o queixo delicadamente. Observe se o peito sobe por no máximo 10 segundos.</p>
           </div>
         </div>
 
         <div class="bg-white rounded-[12px] p-[18px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] text-left flex gap-5 items-center max-md:flex-col max-md:items-center max-md:text-center max-md:gap-3 max-md:p-4">
           <img src="images/rcp4.png" class="w-20 max-md:w-[90px] max-[480px]:w-[76px]" alt="Começar compressões">
           <div>
-            <h3 class="text-[20px] mb-[6px]">4. Inicie as compressões</h3>
-            <p class="text-[#444]">Coloque as mãos no centro do peito e faça <strong>100–120 compressões por minuto</strong>, afundando cerca de 5 cm.</p>
+            <h3 class="text-[20px] font-bold mb-[6px]">4. Inicie as compressões torácicas</h3>
+            <p class="text-[#444]">Coloque as mãos entrelaçadas no centro do peito e faça <strong>100 a 120 compressões por minuto</strong>, afundando 5 a 6 cm.</p>
           </div>
         </div>
 
         <div class="bg-white rounded-[12px] p-[18px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] text-left flex gap-5 items-center max-md:flex-col max-md:items-center max-md:text-center max-md:gap-3 max-md:p-4">
           <img src="images/rcp5.png" class="w-20 max-md:w-[90px] max-[480px]:w-[76px]" alt="Alternar com respirações">
           <div>
-            <h3 class="text-[20px] mb-[6px]">5. Relação 30:2</h3>
-            <p class="text-[#444]">Faça 30 compressões e 2 ventilações. Repita sem parar até a vítima voltar ou a ajuda chegar.</p>
+            <h3 class="text-[20px] font-bold mb-[6px]">5. Mantenha o ciclo</h3>
+            <p class="text-[#444]">Se tiver treinamento, alterne 30 compressões e 2 ventilações. Caso contrário, faça compressões contínuas sem parar até o socorro chegar.</p>
           </div>
         </div>
 
         <div class="bg-white rounded-[12px] p-[18px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] text-left flex gap-5 items-center max-md:flex-col max-md:items-center max-md:text-center max-md:gap-3 max-md:p-4">
           <img src="images/rcp6.png" class="w-20 max-md:w-[90px] max-[480px]:w-[76px]" alt="Uso de DEA">
           <div>
-            <h3 class="text-[20px] mb-[6px]">6. Use o DEA se houver</h3>
-            <p class="text-[#444]">Siga as instruções do aparelho. Ele dirá quando aplicar o choque.</p>
+            <h3 class="text-[20px] font-bold mb-[6px]">6. Use o DEA assim que chegar</h3>
+            <p class="text-[#444]">Ligue o aparelho, cole as pás no peito desnudo da vítima e siga as instruções em áudio do equipamento.</p>
           </div>
         </div>
       </div>
     </section>
   </div>
+
+  <!-- Barra Flutuante de Socorro Rápido -->
+  <div class="fixed bottom-0 left-0 w-full bg-white/95 backdrop-blur-md shadow-[0_-4px_12px_rgba(0,0,0,0.12)] border-t border-[#eee] flex justify-around items-center p-2.5 z-50 gap-2">
+    <a href="tel:192" class="flex-1 max-w-[220px] flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg font-extrabold text-sm sm:text-base no-underline text-white bg-[#d90429] hover:bg-[#b80322] active:scale-95 transition-all text-center">
+      📞 SAMU 192
+    </a>
+    <a href="tel:193" class="flex-1 max-w-[220px] flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg font-extrabold text-sm sm:text-base no-underline text-white bg-[#ef233c] hover:bg-[#d90429] active:scale-95 transition-all text-center">
+      🚒 Bombeiros 193
+    </a>
+    <button onclick="obterLocalizacaoEmergencia('box-localizacao')" class="flex-1 max-w-[220px] bg-[#2b2d42] hover:bg-[#1e2030] text-white border-none py-2.5 px-3 rounded-lg font-bold text-sm sm:text-base cursor-pointer active:scale-95 transition-all">
+      📍 Onde Estou?
+    </button>
+  </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var btn = document.getElementById('mobileMenuBtn');
@@ -123,5 +164,6 @@
       if (backdrop) backdrop.addEventListener('click', function() { menu.classList.add('hidden'); });
     });
   </script>
+  <script src="scripts/emergencia.js"></script>
 </body>
 </html>

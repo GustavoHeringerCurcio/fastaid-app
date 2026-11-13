@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">Primeiros Socorros - Fast Aid</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-[Arial,sans-serif] text-[#222] overflow-x-hidden scroll-smooth pb-24">
+  <div class="max-w-[1400px] mx-auto p-5 pt-0 max-lg:p-4 max-lg:pt-0 max-md:p-3 max-md:pt-0 max-[480px]:p-[10px] max-[480px]:pt-0">
+    
+    <!-- Header fixo padronizado sem Login/Cadastro -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-[#eee] flex justify-between items-center py-3.5 gap-[18px] max-md:flex-row max-md:flex-wrap max-md:items-center max-md:justify-between max-md:py-[10px] max-md:gap-2">
+      <div class="flex items-center gap-[12px] max-md:flex-[1_1_auto] max-md:min-w-0">
+        <a href="tel:192" class="group flex flex-col items-center no-underline text-center transition-transform hover:scale-105 active:scale-95" title="Clique para ligar para o SAMU (192)">
+          <img src="images/logo.png" alt="Ligar para o SAMU 192" class="w-10 h-10 max-[480px]:w-[34px] max-[480px]:h-[34px] shadow-sm rounded-[8px]">
+          <span class="text-[10px] font-extrabold text-[#ff4d4d] uppercase tracking-tighter leading-none mt-1 group-hover:underline">SAMU 192</span>
+        </a>
+        <a href="index.html" class="no-underline text-[#222] hover:opacity-80 transition-opacity">
+          <p class="text-[22px] font-bold max-lg:text-[20px] max-md:text-[18px] max-[480px]:text-[17px]">Fast Aid</p>
+        </a>
+      </div>
+
+      <nav class="flex items-center gap-5 max-md:gap-2" aria-label="Menu principal">
+        <a href="index.html" class="flex items-center gap-1.5 bg-[#f5f5f5] hover:bg-[#eaeaea] text-[#222] font-medium px-3 py-2 rounded-[8px] no-underline text-sm transition-colors" title="Voltar para a página inicial">
+          <svg class="w-4 h-4 text-[#ff4d4d] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+          </svg>
+          <span>Início</span>
+        </a>
+
+        <div class="flex items-center gap-5 max-md:hidden">
+          <a href="index.html#emergencias" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Todas as Emergências</a>
+          <a href="rcp.html" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">RCP</a>
+          <a href="convulsao.html" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Convulsão</a>
+        </div>
+
+        <button id="mobileMenuBtn" class="hidden max-md:flex flex-col gap-[4px] p-1.5 bg-transparent border-none cursor-pointer" aria-label="Abrir menu">
+          <span class="block w-6 h-[2.5px] bg-[#333] rounded-full"></span>
+          <span class="block w-6 h-[2.5px] bg-[#333] rounded-full"></span>
+          <span class="block w-6 h-[2.5px] bg-[#333] rounded-full"></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Menu Mobile -->
+    <div id="mobileMenu" class="hidden fixed inset-0 z-50">
+      <div id="mobileMenuBackdrop" class="absolute inset-0 bg-black/50"></div>
+      <div class="absolute top-0 right-0 w-[280px] h-full bg-white shadow-lg p-6 pt-16">
+        <button id="mobileMenuClose" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-transparent border-none cursor-pointer">
+          <svg class="w-6 h-6 text-[#333]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        <div class="flex flex-col gap-4">
+          <a href="index.html" class="no-underline text-[#333] font-bold text-base py-2 border-b border-[#eee]">Início</a>
+          <a href="index.html#emergencias" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Todas as Emergências</a>
+          <a href="rcp.html" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Guia de RCP</a>
+          <a href="convulsao.html" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Guia de Convulsão</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Box de Localização GPS -->
+    <div id="box-localizacao" class="hidden my-4 p-4 rounded-xl bg-amber-50 border border-amber-300 text-center text-[#222] text-sm shadow-sm"></div>
+
+    <!-- Ícone Principal da Emergência -->
+    <div class="text-center mt-[25px] mb-[10px] flex justify-center items-center">
+      <img id="emergencia-img" src="images/logo.png" class="w-[120px] m-[30px] -mb-5 max-md:w-[95px] max-md:m-[22px] max-md:-mb-[10px]" alt="Ícone da Emergência">
+    </div>
+
+    <section class="max-w-[900px] mx-auto py-10 px-5 text-center max-md:py-[30px] max-md:px-3">
+      <h1 id="emergencia-titulo" class="text-[32px] mb-[10px] max-lg:text-[27px] max-md:text-2xl font-bold">Carregando...</h1>
+      <p id="emergencia-subtitulo" class="text-base mb-[25px] text-[#555] max-md:text-[15px]">Siga o passo a passo abaixo até a chegada do socorro:</p>
+
+      <!-- PAINEL INTERATIVO: ALERTA CRÍTICO + LEITOR DE VOZ -->
+      <div class="bg-[#f8f9fa] border-l-4 border-[#d90429] p-4 mb-7 rounded-lg shadow-sm flex flex-wrap items-center justify-between gap-4 text-left max-md:flex-col max-md:text-center">
+        <div class="flex-1 min-w-[240px]">
+          <strong class="text-sm uppercase tracking-wider text-[#d90429] block">⚠️ Regra de Ouro / O que NÃO fazer:</strong>
+          <p id="emergencia-alerta" class="text-sm text-[#333] font-medium mt-1"></p>
+        </div>
+        <div class="flex gap-2 flex-wrap justify-center">
+          <button onclick="lerInstrucoesPagina('#passos-dinamicos', this)" class="bg-[#2b2d42] hover:bg-[#1e2030] text-white border-none py-2.5 px-4 rounded-lg text-sm font-bold cursor-pointer transition-colors">
+            🔊 Ouvir Instruções
+          </button>
+        </div>
+      </div>
+
+      <!-- LISTA DINÂMICA DE PASSOS -->
+      <div id="passos-dinamicos" class="flex flex-col gap-[22px] max-md:gap-4"></div>
+
+      <!-- Botões rápidos de navegação no final da página -->
+      <div class="mt-10 pt-6 border-t border-[#eee] flex flex-wrap justify-center gap-4">
+        <a href="index.html#emergencias" class="bg-[#f5f5f5] hover:bg-[#eaeaea] text-[#222] font-bold py-3 px-6 rounded-lg no-underline text-sm transition-colors">
+          ← Ver Outras Emergências
+        </a>
+        <a href="rcp.html" class="bg-[#fff0f0] hover:bg-[#ffe0e0] text-[#d90429] font-bold py-3 px-6 rounded-lg no-underline text-sm transition-colors">
+          ❤️ A vítima parou de respirar? Ir para RCP ›
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Barra Flutuante de Socorro Rápido -->
+  <div class="fixed bottom-0 left-0 w-full bg-white/95 backdrop-blur-md shadow-[0_-4px_12px_rgba(0,0,0,0.12)] border-t border-[#eee] flex justify-around items-center p-2.5 z-50 gap-2">
+    <a href="tel:192" class="flex-1 max-w-[220px] flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg font-extrabold text-sm sm:text-base no-underline text-white bg-[#d90429] hover:bg-[#b80322] active:scale-95 transition-all text-center">
+      📞 SAMU 192
+    </a>
+    <a href="tel:193" class="flex-1 max-w-[220px] flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg font-extrabold text-sm sm:text-base no-underline text-white bg-[#ef233c] hover:bg-[#d90429] active:scale-95 transition-all text-center">
+      🚒 Bombeiros 193
+    </a>
+    <button onclick="obterLocalizacaoEmergencia('box-localizacao')" class="flex-1 max-w-[220px] bg-[#2b2d42] hover:bg-[#1e2030] text-white border-none py-2.5 px-3 rounded-lg font-bold text-sm sm:text-base cursor-pointer active:scale-95 transition-all">
+      📍 Onde Estou?
+    </button>
+  </div>
+
+  <script>
+    // Base de Dados dos 6 Protocolos de Primeiros Socorros
+    const PROTOCOLOS = {
+      queimaduras: {
+        titulo: "Queimaduras",
+        imagem: "images/queimadura.png",
+        alerta: "NUNCA passe pasta de dente, manteiga, café, óleo ou gelo na queimadura. Não estoure as bolhas.",
+        passos: [
+          { titulo: "1. Afaste a fonte de calor", texto: "Interrompa imediatamente o contato da vítima com o fogo, líquido fervente, vapor ou objeto quente. Se as roupas estiverem em chamas, faça a pessoa rolar no chão ou abafe com um cobertor." },
+          { titulo: "2. Resfrie com água corrente (10 a 15 min)", texto: "Coloque a área queimada sob água corrente em temperatura ambiente (fria, mas não gelada) por 10 a 15 minutos para interromper o avanço do calor nas camadas da pele." },
+          { titulo: "3. Retire acessórios com cuidado", texto: "Remova anéis, relógios, pulseiras e roupas que NÃO estejam grudadas na pele antes que o local comece a inchar. Se o tecido estiver colado na ferida, não puxe." },
+          { titulo: "4. Proteja com pano limpo e úmido", texto: "Cubra a queimadura frouxamente com uma compressa de gaze estéril ou um pano limpo umedecido com soro fisiológico ou água limpa." },
+          { titulo: "5. Avalie a gravidade e chame socorro", texto: "Ligue 192 ou 193 imediatamente se a queimadura atingir rosto, mãos, pés, genitais, vias aéreas (inalação de fumaça) ou for extensa/profunda." }
+        ]
+      },
+      traumas: {
+        titulo: "Traumas, Quedas e Fraturas",
+        imagem: "images/traumas.png",
+        alerta: "NUNCA tente colocar um osso quebrado ou articulação deslocada de volta no lugar e NÃO mova vítimas de quedas graves ou acidentes de trânsito.",
+        passos: [
+          { titulo: "1. Garanta a segurança e não mova a vítima", texto: "Em quedas de altura, atropelamentos ou colisões, suspeite sempre de lesão na coluna cervical. Mantenha a vítima imóvel no chão até o resgate chegar." },
+          { titulo: "2. Estabilize a cabeça e o pescoço", texto: "Peça para a pessoa não mexer o pescoço. Se necessário, apoie as mãos suavemente nas laterais da cabeça dela para evitar que ela gire para os lados." },
+          { titulo: "3. Imobilize o membro na posição encontrada", texto: "Se houver suspeita de fratura em braço ou perna (dor intensa, inchaço ou deformidade), apoie o membro com almofadas ou talas improvisadas sem forçar o alinhamento." },
+          { titulo: "4. Proteja fraturas expostas", texto: "Se o osso perfurou a pele, NÃO tente empurrá-lo para dentro. Cubra o ferimento com um pano muito limpo ou gaze estéril e controle o sangramento ao redor com pressão suave." },
+          { titulo: "5. Aplique frio local (apenas em traumas leves)", texto: "Em pancadas ou entorses fechados sem ferida aberta, aplique uma bolsa de gelo envolvida em um pano por até 15 minutos para reduzir o inchaço e acione o 192/193." }
+        ]
+      },
+      cortes: {
+        titulo: "Cortes e Sangramentos",
+        imagem: "images/cortesesangramentos.png",
+        alerta: "NUNCA retire objetos encravados (facas, cacos de vidro, ferragens) do ferimento, pois eles funcionam como um tampão contendo uma hemorragia maior.",
+        passos: [
+          { titulo: "1. Faça compressão direta imediata", texto: "Pegue um pano limpo, toalha ou pacotes de gaze e pressione com firmeza diretamente sobre o corte que está sangrando. Mantenha a pressão contínua por pelo menos 5 a 10 minutos." },
+          { titulo: "2. Não troque o pano encharcado", texto: "Se o sangue atravessar o primeiro pano, NÃO o retire (para não arrancar o coágulo que está se formando). Coloque outro pano limpo por cima do primeiro e continue pressionando." },
+          { titulo: "3. Lave apenas cortes superficiais", texto: "Se for um corte pequeno e o sangramento já tiver parado, lave com água corrente e sabão neutro, mantendo protegido com curativo limpo." },
+          { titulo: "4. Objeto encravado? Estabilize ao redor", texto: "Caso haja vidro ou metal fincado no corte, faça pressão apenas nas bordas ao redor do objeto e crie um apoio com panos para que ele não se mova." },
+          { titulo: "5. Previna o estado de choque e ligue 192", texto: "Se o sangramento for em jato, muito intenso ou não parar com a pressão, ligue 192 imediatamente, deite a vítima e mantenha-a aquecida." }
+        ]
+      },
+      choque: {
+        titulo: "Choque Elétrico",
+        imagem: "images/choqueeletrico.png",
+        alerta: "NUNCA toque na vítima com as mãos nuas enquanto ela ainda estiver em contato com a rede elétrica ou fio energizado!",
+        passos: [
+          { titulo: "1. Desligue a fonte de energia primeiro", texto: "Antes de se aproximar, desligue a chave geral/disjuntor ou tire o aparelho da tomada. Se for fio de alta tensão na rua, afaste todos e ligue 193 (Bombeiros)." },
+          { titulo: "2. Afaste a vítima com material isolante seco", texto: "Se não puder desligar a energia imediatamente, suba em algo seco (borracha ou madeira) e use um cabo de vassoura de madeira seco ou plástico para afastar o fio da vítima. Nunca use objetos metálicos ou úmidos." },
+          { titulo: "3. Verifique resposta e respiração", texto: "Assim que a vítima estiver livre da corrente elétrica e em local seguro, verifique se ela responde e se o peito se move (respiração)." },
+          { titulo: "4. Inicie RCP se não houver respiração", texto: "O choque elétrico causa parada cardiorrespiratória com frequência. Se a vítima estiver inconsciente e não respirar, inicie imediatamente as compressões no peito (veja o guia de RCP)." },
+          { titulo: "5. Cuide das queimaduras elétricas", texto: "Se a vítima estiver respirando, procure pelas queimaduras de entrada e saída da corrente elétrica, cubra com pano limpo e seco e aguarde o SAMU (192)." }
+        ]
+      },
+      afogamento: {
+        titulo: "Afogamento",
+        imagem: "images/afogamento.png",
+        alerta: "NUNCA entre na água para tentar salvar alguém se você não tiver treinamento de guarda-vidas. Jogue algo que flutue!",
+        passos: [
+          { titulo: "1. Tire a vítima da água com segurança", texto: "Forneça um objeto flutuante (boia, garrafa PET vazia fechada, prancha, isopor) ou estenda um cabo/galho comprido a partir da margem segura, sem entrar na correnteza." },
+          { titulo: "2. Posicione em local plano e peça ajuda", texto: "Assim que retirar a vítima da água, deite-a de barriga para cima em local seguro e peça para alguém ligar imediatamente para o 193 (Bombeiros) ou 192 (SAMU)." },
+          { titulo: "3. Verifique a respiração (não aperte a barriga)", texto: "Abra as vias aéreas inclinando levemente a cabeça e ouça a respiração por até 10 segundos. NUNCA tente comprimir o estômago para tirar água engolida." },
+          { titulo: "4. Faça 5 ventilações e inicie RCP se não respirar", texto: "No afogamento, a parada é por falta de oxigênio. Se souber fazer respiração boca a boca, inicie com 5 ventilações de resgate seguidas de 30 compressões torácicas e 2 ventilações." },
+          { titulo: "5. Se estiver respirando, coloque de lado e aqueça", texto: "Caso a pessoa esteja tossindo ou respirando sozinha, vire-a de lado (posição lateral de segurança), retire roupas molhadas se possível e cubra-a com toalha ou cobertor seco para evitar hipotermia." }
+        ]
+      },
+      desmaio: {
+        titulo: "Desmaio (Síncope)",
+        imagem: "images/desmaio.png",
+        alerta: "NUNCA jogue água fria no rosto, não dê álcool/amônia para cheirar e não tente dar água ou comida enquanto a pessoa estiver desacordada.",
+        passos: [
+          { titulo: "1. Amorteça a queda e deite a pessoa", texto: "Se perceber que alguém está prestes a desmaiar (suor frio, palidez, tontura), ampare a pessoa e coloque-a deitada de costas no chão imediatamente." },
+          { titulo: "2. Verifique se ela está respirando", texto: "Observe se o peito sobe e desce normalmente. Se a pessoa não responder e NÃO estiver respirando, não é um simples desmaio: ligue 192 e inicie a RCP imediatamente." },
+          { titulo: "3. Eleve as pernas (cerca de 30 cm)", texto: "Se a pessoa estiver respirando normalmente e sem traumas na cabeça, levante as pernas dela apoiando os pés sobre uma mochila, cadeira ou suas próprias pernas para ajudar o sangue a retornar ao cérebro." },
+          { titulo: "4. Afrouxe roupas apertadas e ventile o local", texto: "Solte botões de camisa, gravatas, cintos e afaste os curiosos ao redor para permitir a circulação de ar fresco." },
+          { titulo: "5. Aguarde a recuperação gradual", texto: "Quando a pessoa acordar, não deixe que ela se levante de uma vez. Mantenha-a deitada por alguns minutos, depois sentada devagar. Ligue 192 se ela não acordar em 2 minutos, se for idosa, gestante ou diabética." }
+        ]
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Controle do Menu Mobile
+      var btn = document.getElementById('mobileMenuBtn');
+      var menu = document.getElementById('mobileMenu');
+      var close = document.getElementById('mobileMenuClose');
+      var backdrop = document.getElementById('mobileMenuBackdrop');
+      if (btn && menu) {
+        btn.addEventListener('click', function() { menu.classList.remove('hidden'); });
+        if (close) close.addEventListener('click', function() { menu.classList.add('hidden'); });
+        if (backdrop) backdrop.addEventListener('click', function() { menu.classList.add('hidden'); });
+      }
+
+      // Leitura do parâmetro ?tipo= na URL
+      const params = new URLSearchParams(window.location.search);
+      const tipo = params.get('tipo') || 'queimaduras';
+      const dados = PROTOCOLOS[tipo] || PROTOCOLOS.queimaduras;
+
+      // Preenchimento do cabeçalho da emergência
+      document.getElementById('page-title').innerText = `${dados.titulo} - Fast Aid`;
+      document.getElementById('emergencia-titulo').innerText = dados.titulo;
+      document.getElementById('emergencia-img').src = dados.imagem;
+      document.getElementById('emergencia-img').alt = dados.titulo;
+      document.getElementById('emergencia-alerta').innerText = dados.alerta;
+
+      // Renderização dos cards de passo a passo
+      const containerPassos = document.getElementById('passos-dinamicos');
+      containerPassos.innerHTML = dados.passos.map((passo, index) => `
+        <div class="bg-white rounded-[12px] p-[18px] shadow-[0_4px_12px_rgba(0,0,0,0.08)] text-left flex gap-5 items-center max-md:flex-col max-md:items-center max-md:text-center max-md:gap-3 max-md:p-4 border border-[#f0f0f0]">
+          <div class="flex flex-col items-center justify-center shrink-0">
+            <div class="relative">
+              <img src="${dados.imagem}" class="w-16 h-16 object-contain" alt="Passo ${index + 1}">
+              <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#d90429] text-white rounded-full flex items-center justify-center font-extrabold text-sm shadow">${index + 1}</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-[20px] font-bold mb-[6px] text-[#222]">${passo.titulo}</h3>
+            <p class="text-[#444] leading-relaxed">${passo.texto}</p>
+          </div>
+        </div>
+      `).join('');
+    });
+  </script>
+  <script src="scripts/emergencia.js"></script>
+</body>
+</html>
