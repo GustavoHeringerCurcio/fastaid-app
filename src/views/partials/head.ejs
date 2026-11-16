@@ -6,7 +6,7 @@
   <title><%= titulo %></title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="font-[Arial,sans-serif] text-[#222] overflow-x-hidden scroll-smooth">
+<body class="font-[Arial,sans-serif] text-[#222] overflow-x-hidden scroll-smooth pb-24">
   <div class="max-w-[1400px] mx-auto p-5 pt-0 max-lg:p-4 max-lg:pt-0 max-md:p-3 max-md:pt-0 max-[480px]:p-[10px] max-[480px]:pt-0">
     <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-[#eee] flex justify-between items-center py-3.5 gap-[18px] max-md:flex-row max-md:flex-wrap max-md:items-center max-md:justify-between max-md:py-[10px] max-md:gap-2">
       <div id="logohome" class="flex items-center gap-[12px] max-md:flex-[1_1_auto] max-md:min-w-0">
@@ -28,8 +28,10 @@
         </a>
 
         <div class="flex items-center gap-5 max-md:hidden">
-          <a href="#" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Sobre</a>
-          <a href="#" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Contato</a>
+          <a href="/#emergencias" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Emergências</a>
+          <a href="/#como-funciona" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Como funciona</a>
+          <a href="/aulas" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Aulas</a>
+          <a href="/contato" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Contato</a>
           <a href="/cadastro" id="navCadastro" class="ml-auto bg-[#ff4d4d] hover:bg-[#e63e3e] text-white px-[14px] py-2 rounded-[8px] no-underline text-base transition-colors">Cadastrar-se</a>
           <a href="/login" id="navLogin" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Fazer login</a>
         </div>
@@ -42,6 +44,7 @@
           </button>
           <div id="profileDropdown" class="hidden absolute right-0 top-full mt-2 w-56 bg-white rounded-[12px] shadow-[0_8px_24px_rgba(0,0,0,0.12)] border border-[#eee] py-2 z-50">
             <div class="px-4 py-2 text-sm text-[#555] border-b border-[#eee]" id="profileEmail"></div>
+            <a href="/aulas" class="block px-4 py-2 text-sm text-[#333] no-underline hover:bg-[#f5f5f5] transition-colors">Minhas aulas</a>
             <button id="logoutBtn" class="w-full text-left px-4 py-2 text-sm text-[#ff4d4d] hover:bg-[#fff5f5] transition-colors flex items-center gap-2 cursor-pointer bg-transparent border-none">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
@@ -50,7 +53,7 @@
             </button>
           </div>
         </div>
-        <button id="mobileMenuBtn" class="hidden max-md:flex flex-col gap-[4px] p-1 bg-transparent border-none cursor-pointer" aria-label="Abrir menu">
+        <button id="mobileMenuBtn" class="hidden max-md:flex flex-col gap-[4px] p-1.5 bg-transparent border-none cursor-pointer" aria-label="Abrir menu">
           <span class="block w-6 h-[2.5px] bg-[#333] rounded-full"></span>
           <span class="block w-6 h-[2.5px] bg-[#333] rounded-full"></span>
           <span class="block w-6 h-[2.5px] bg-[#333] rounded-full"></span>
@@ -67,9 +70,11 @@
           </svg>
         </button>
         <div class="flex flex-col gap-4">
-          <a href="/" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Início</a>
-          <a href="#" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Sobre</a>
-          <a href="#" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Contato</a>
+          <a href="/" class="no-underline text-[#333] font-bold text-base py-2 border-b border-[#eee]">Início</a>
+          <a href="/#emergencias" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Emergências</a>
+          <a href="/#como-funciona" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Como funciona</a>
+          <a href="/aulas" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Aulas</a>
+          <a href="/contato" class="no-underline text-[#333] text-base py-2 border-b border-[#eee]">Contato</a>
           <a href="/cadastro" id="navCadastroMobile" class="bg-[#ff4d4d] text-white px-[14px] py-[10px] rounded-[8px] no-underline text-base text-center mt-2">Cadastrar-se</a>
           <a href="/login" id="navLoginMobile" class="no-underline text-[#333] text-base py-2 text-center">Fazer login</a>
           <div id="navProfileMobile" class="hidden flex-col gap-3 pt-4 mt-4 border-t border-[#eee]">
@@ -77,6 +82,7 @@
               <img id="profilePicMobile" src="" alt="" class="w-10 h-10 rounded-full object-cover border-2 border-[#ff4d4d]">
               <span id="profileEmailMobile" class="text-sm text-[#555] truncate"></span>
             </div>
+            <a href="/aulas" class="text-sm text-[#333] no-underline px-1">Minhas aulas</a>
             <button id="logoutBtnMobile" class="w-full text-left px-3 py-2.5 text-sm text-[#ff4d4d] hover:bg-[#fff5f5] rounded-[8px] flex items-center gap-2 cursor-pointer bg-transparent border-none">
               <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>

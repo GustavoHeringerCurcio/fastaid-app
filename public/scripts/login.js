@@ -1,6 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
-  if (localStorage.getItem("user")) {
-    window.location.href = "/";
+  const params = new URLSearchParams(window.location.search);
+  const redirectParam = params.get("redirect") || "";
+  const destino = redirectParam.startsWith("/") && !redirectParam.startsWith("//")
+    ? redirectParam
+    : "/";
+  const veioDeRotaProtegida = params.has("redirect");
+
+  if (veioDeRotaProtegida) {
+    localStorage.removeItem("user");
+  } else if (localStorage.getItem("user")) {
+    window.location.href = destino;
     return;
   }
 
@@ -55,6 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
       })
     );
 
-    window.location.href = "/";
+    window.location.href = destino;
   });
 });

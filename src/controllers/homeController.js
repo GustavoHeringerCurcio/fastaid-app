@@ -7,4 +7,10 @@ function index(req, res) {
   });
 }
 
-module.exports = { index };
+function contato(req, res) {
+  res.render("contato", {
+    titulo: "Contato da Equipe - Fast Aid",
+  });
+}
+
+module.exports = { index, contato };
