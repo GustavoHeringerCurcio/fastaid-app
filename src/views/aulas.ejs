@@ -1,41 +1,45 @@
 <%- include('partials/head', { titulo }) %>
 
-    <main class="max-w-[1200px] mx-auto py-12 px-4 max-md:py-8">
+    <main class="mx-auto max-w-[1200px] px-4 py-12 max-md:py-8">
 
-      <div class="text-center mb-10 max-md:mb-8">
-        <span class="inline-block bg-[#fff0f0] text-[#d90429] text-xs font-extrabold uppercase tracking-wider px-3 py-1 rounded-full mb-3">
+      <div class="mx-auto mb-10 max-w-[680px] text-center max-md:mb-8">
+        <span class="mb-3 inline-block rounded-full bg-[#fff0f0] px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider text-[#d90429]">
           Área do Aluno
         </span>
-        <h1 class="text-[38px] font-bold text-[#222] mb-3 max-md:text-[28px]">Aulas</h1>
-        <p class="text-[#555] max-w-[640px] mx-auto text-base">
-          Olá, <strong><%= usuario.nome %></strong>! Escolha uma aula para revisar os procedimentos de primeiros socorros.
+        <h1 class="text-[36px] font-bold leading-tight text-[#222] max-md:text-[28px]">Aulas</h1>
+        <p class="mx-auto mt-3 text-base leading-relaxed text-[#555]">
+          Olá, <strong class="text-[#222]"><%= usuario.nome %></strong>! Escolha uma aula para revisar os procedimentos de primeiros socorros.
         </p>
       </div>
 
-      <div class="grid grid-cols-3 gap-6 max-lg:grid-cols-2 max-md:grid-cols-1">
+      <div class="grid auto-rows-fr grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
 
         <% aulas.forEach((aula) => { %>
-        <article class="bg-white rounded-[16px] p-6 border border-[#eee] shadow-[0_4px_15px_rgba(0,0,0,0.05)] hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.1)] transition-all flex flex-col justify-between">
+        <article class="group flex h-full flex-col rounded-2xl border border-[#eee] bg-white p-6 shadow-[0_2px_10px_rgba(0,0,0,0.03)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#ffd6d6] hover:shadow-[0_18px_35px_rgba(255,77,77,0.12)]">
 
-          <div>
-            <div class="flex items-center justify-between gap-3 mb-4">
-              <span class="inline-block text-xs bg-[#fff0f0] text-[#d90429] px-2.5 py-1 rounded-full font-semibold">
-                <%= aula.nivel %>
-              </span>
-              <span class="text-xs text-[#888] font-medium">⏱ <%= aula.duracao %></span>
-            </div>
-
-            <h2 class="text-[21px] font-bold text-[#222] mb-2 leading-tight">
-              <%= aula.titulo %>
-            </h2>
-
-            <p class="text-[#666] text-sm leading-relaxed mb-6">
-              <%= aula.descricao %>
-            </p>
+          <div class="mb-4 flex items-center justify-between gap-3">
+            <span class="inline-flex items-center rounded-full bg-[#fff0f0] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-[#d90429]">
+              <%= aula.nivel %>
+            </span>
+            <span class="inline-flex items-center gap-1 text-xs font-medium text-[#888]">
+              ⏱ <%= aula.duracao %>
+            </span>
           </div>
 
-          <a href="<%= aula.rota %>" class="inline-flex items-center justify-center gap-1.5 bg-[#ff4d4d] hover:bg-[#e63e3e] text-white font-bold py-2.5 px-4 rounded-lg no-underline text-sm transition-colors">
-            Abrir aula →
+          <h2 class="mb-2 text-[20px] font-bold leading-snug text-[#222]">
+            <%= aula.titulo %>
+          </h2>
+
+          <p class="mb-6 flex-1 text-sm leading-relaxed text-[#666]">
+            <%= aula.descricao %>
+          </p>
+
+          <a
+            href="<%= aula.rota %>"
+            class="mt-auto inline-flex w-full items-center justify-center gap-1.5 rounded-xl bg-[#ff4d4d] px-4 py-3 text-sm font-bold text-white no-underline transition-all hover:bg-[#e63e3e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff4d4d]/40"
+          >
+            Abrir aula
+            <span aria-hidden="true" class="transition-transform duration-300 group-hover:translate-x-1">→</span>
           </a>
 
         </article>
