@@ -7,24 +7,31 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="font-[Arial,sans-serif] text-[#222] overflow-x-hidden scroll-smooth">
-  <div class="max-w-[1400px] mx-auto p-5 max-lg:p-4 max-md:p-3 max-[480px]:p-[10px]">
-    <header class="flex justify-between items-center py-5 gap-[18px] max-md:flex-row max-md:flex-wrap max-md:items-center max-md:justify-between max-md:py-[14px] max-md:gap-3">
-      <div id="logohome" class="flex items-center gap-[10px] max-md:flex-[1_1_auto] max-md:min-w-0">
-        <a href="/">
-          <div class="flex items-center gap-[10px]">
-            <img src="/images/logo.png" alt="Logo First Aid" class="w-10 h-10 max-[480px]:w-[34px] max-[480px]:h-[34px]">
-          </div>
+  <div class="max-w-[1400px] mx-auto p-5 pt-0 max-lg:p-4 max-lg:pt-0 max-md:p-3 max-md:pt-0 max-[480px]:p-[10px] max-[480px]:pt-0">
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-[#eee] flex justify-between items-center py-3.5 gap-[18px] max-md:flex-row max-md:flex-wrap max-md:items-center max-md:justify-between max-md:py-[10px] max-md:gap-2">
+      <div id="logohome" class="flex items-center gap-[12px] max-md:flex-[1_1_auto] max-md:min-w-0">
+        <a href="tel:192" class="group flex flex-col items-center no-underline text-center transition-transform hover:scale-105 active:scale-95" title="Clique para ligar para o SAMU (192)">
+          <img src="/images/logo.png" alt="Ligar para o SAMU 192" class="w-10 h-10 max-[480px]:w-[34px] max-[480px]:h-[34px] shadow-sm rounded-[8px]">
+          <span class="text-[10px] font-extrabold text-[#ff4d4d] uppercase tracking-tighter leading-none mt-1 group-hover:underline">SAMU 192</span>
         </a>
-        <p class="text-[22px] font-bold max-lg:text-[20px] max-md:text-[18px] max-[480px]:text-[18px]">Fast Aid</p>
+        <a href="/" class="no-underline text-[#222] hover:opacity-80 transition-opacity">
+          <p class="text-[22px] font-bold max-lg:text-[20px] max-md:text-[18px] max-[480px]:text-[17px]">Fast Aid</p>
+        </a>
       </div>
 
-      <nav id="main-nav" class="flex items-center gap-5 max-md:gap-3" aria-label="Menu principal">
+      <nav id="main-nav" class="flex items-center gap-5 max-md:gap-2" aria-label="Menu principal">
+        <a href="/" class="flex items-center gap-1.5 bg-[#f5f5f5] hover:bg-[#eaeaea] text-[#222] font-medium px-3 py-2 rounded-[8px] no-underline text-sm transition-colors" title="Ir para a página inicial">
+          <svg class="w-4 h-4 text-[#ff4d4d] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+          </svg>
+          <span>Início</span>
+        </a>
+
         <div class="flex items-center gap-5 max-md:hidden">
-          <a href="/" class="no-underline text-[#333] text-base">Início</a>
-          <a href="#" class="no-underline text-[#333] text-base">Sobre</a>
-          <a href="#" class="no-underline text-[#333] text-base">Contato</a>
-          <a href="/cadastro" id="navCadastro" class="ml-auto bg-[#ff4d4d] text-white px-[14px] py-2 rounded-[8px] no-underline text-base">Cadastrar-se</a>
-          <a href="/login" id="navLogin" class="no-underline text-[#333] text-base">Fazer login</a>
+          <a href="#" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Sobre</a>
+          <a href="#" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Contato</a>
+          <a href="/cadastro" id="navCadastro" class="ml-auto bg-[#ff4d4d] hover:bg-[#e63e3e] text-white px-[14px] py-2 rounded-[8px] no-underline text-base transition-colors">Cadastrar-se</a>
+          <a href="/login" id="navLogin" class="no-underline text-[#333] hover:text-[#ff4d4d] transition-colors text-base">Fazer login</a>
         </div>
         <div id="navProfile" class="hidden relative max-md:hidden">
           <button id="profileTrigger" class="flex items-center gap-2 cursor-pointer bg-transparent border-none p-0">

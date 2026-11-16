@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GustavoHeringerCurcio/fastaid.git"
+    "url": "git+https://github.com/GustavoHeringerCurcio/fastaid-app.git"
   },
   "keywords": [],
   "author": "",
@@ -19,9 +19,9 @@
     "node": "20.x"
   },
   "bugs": {
-    "url": "https://github.com/GustavoHeringerCurcio/fastaid/issues"
+    "url": "https://github.com/GustavoHeringerCurcio/fastaid-app/issues"
   },
-  "homepage": "https://github.com/GustavoHeringerCurcio/fastaid#readme",
+  "homepage": "https://github.com/GustavoHeringerCurcio/fastaid-app#readme",
   "dependencies": {
     "ejs": "^6.0.1",
     "express": "^5.2.1"
