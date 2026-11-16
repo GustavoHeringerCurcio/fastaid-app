@@ -1,19 +1,93 @@
-    <footer class="grid grid-cols-[auto_1fr_auto] items-center gap-[30px] mt-[60px] p-6 max-lg:gap-5 max-md:mt-10 max-md:flex max-md:flex-col max-md:text-center max-md:gap-0">
-      <img src="/images/logo.png" alt="Logo First Aid" class="w-[120px] h-[120px] -mt-[5px] max-lg:w-[95px] max-lg:h-[95px] max-md:mx-auto max-md:mb-2">
-      <div class="max-md:w-full max-md:py-[14px]">
-        <strong id="titulofooter" class="text-[22px] font-bold max-md:text-[20px]">Fast Aid</strong>
-        <div class="max-w-[420px] mt-[6px] text-[#555] max-md:mx-auto">Informações básicas sobre primeiros socorros. Em caso de emergência, ligue <a href="tel:192" class="text-[#ff4d4d] font-bold underline">192 (SAMU)</a>.</div>
+    <footer class="mt-16 rounded-3xl border border-[#eee] bg-white p-8 sm:p-10">
+      <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+
+        <div>
+          <a href="/" class="inline-flex items-center gap-3 no-underline">
+            <img src="/images/logo.png" alt="Fast Aid" class="h-11 w-11 rounded-xl">
+            <span class="text-lg font-extrabold tracking-tight text-ink">Fast Aid</span>
+          </a>
+          <p class="mt-4 max-w-[260px] text-sm leading-relaxed text-[#666]">
+            Informações básicas sobre primeiros socorros. Em caso de emergência, ligue
+            <a href="tel:192" class="font-bold text-brand-700 no-underline hover:underline">192 (SAMU)</a>.
+          </p>
+
+          <div class="mt-5 flex items-center gap-2">
+            <a
+              href="https://instagram.com/fastaid.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-500 text-white no-underline transition-colors hover:bg-brand-600"
+              aria-label="Instagram do Fast Aid"
+              title="Instagram"
+            >
+              <svg class="h-[18px] w-[18px]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+              </svg>
+            </a>
+            <a
+              href="https://facebook.com/fastaid.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#1f2433] text-white no-underline transition-colors hover:bg-[#2b2d42]"
+              aria-label="Facebook do Fast Aid"
+              title="Facebook"
+            >
+              <svg class="h-[18px] w-[18px]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-[#999]">Navegação</h3>
+          <ul class="mt-4 space-y-2.5 text-sm">
+            <li><a href="/" class="font-medium text-[#555] no-underline transition-colors hover:text-brand-700">Início</a></li>
+            <li><a href="/#emergencias" class="font-medium text-[#555] no-underline transition-colors hover:text-brand-700">Emergências</a></li>
+            <li><a href="/aulas" class="font-medium text-[#555] no-underline transition-colors hover:text-brand-700">Aulas</a></li>
+            <li><a href="/contato" class="font-medium text-[#555] no-underline transition-colors hover:text-brand-700">Contato</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-[#999]">Emergência</h3>
+          <ul class="mt-4 space-y-2.5 text-sm">
+            <li>
+              <a href="tel:192" class="inline-flex items-center gap-2 font-semibold text-[#555] no-underline transition-colors hover:text-brand-700">
+                <span class="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-50 text-brand-700">192</span>
+                SAMU
+              </a>
+            </li>
+            <li>
+              <a href="tel:193" class="inline-flex items-center gap-2 font-semibold text-[#555] no-underline transition-colors hover:text-brand-700">
+                <span class="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-50 text-brand-700">193</span>
+                Bombeiros
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-[#999]">Fale com a gente</h3>
+          <ul class="mt-4 space-y-2.5 text-sm">
+            <li>
+              <a href="mailto:contato@fastaid.app" class="font-medium text-[#555] no-underline transition-colors hover:text-brand-700">
+                contato@fastaid.app
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/fastaid.app" target="_blank" rel="noopener noreferrer" class="font-medium text-[#555] no-underline transition-colors hover:text-brand-700">
+                @fastaid.app
+              </a>
+            </li>
+            <li class="text-[#777]">Seg–Sex, 8h às 18h</li>
+          </ul>
+        </div>
+
       </div>
 
-      <div class="justify-self-end text-right max-md:justify-self-center max-md:text-center max-md:w-full max-md:py-[14px] max-md:border-t border-[#e8e8e8]">
-        <a href="#" class="text-[#ff4d4d] no-underline hover:underline">fastaid@gmail.com</a>
-        <div class="flex gap-5 mt-[10px] justify-end max-lg:justify-start max-md:justify-center">
-          <a class="w-12 h-12 bg-[#ff4d4d] text-white flex items-center justify-center rounded-[12px] text-[22px] transition-[0.3s_ease] hover:scale-[1.08]" href="#">
-            <img src="/images/logoinsta.png" alt="logo instagram" class="w-[38px]">
-          </a>
-          <a class="w-12 h-12 bg-[#ff4d4d] text-white flex items-center justify-center rounded-[12px] text-[22px] transition-[0.3s_ease] hover:scale-[1.08]" href="#">
-            <img src="/images/logoface.png" alt="logo facebook" class="w-[38px]">
-          </a>
-        </div>
+      <div class="mt-10 flex flex-col gap-3 border-t border-[#eee] pt-6 text-xs text-[#999] sm:flex-row sm:items-center sm:justify-between">
+        <p>© <%= locals.ano || new Date().getFullYear() %> Fast Aid. Todos os direitos reservados.</p>
+        <p>Feito para aprender a salvar vidas.</p>
       </div>
     </footer>

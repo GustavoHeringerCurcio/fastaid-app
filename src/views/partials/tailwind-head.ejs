@@ -1,0 +1,68 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand: {
+            50: "#fff5f5",
+            100: "#ffe3e3",
+            200: "#ffc9c9",
+            400: "#ff6b6b",
+            500: "#ff4d4d",
+            600: "#e63e3e",
+            700: "#d90429",
+            900: "#7f1020",
+          },
+          ink: {
+            DEFAULT: "#222222",
+            soft: "#555555",
+            muted: "#777777",
+          },
+        },
+        fontFamily: {
+          sans: ["Inter", "system-ui", "Arial", "sans-serif"],
+        },
+        boxShadow: {
+          card: "0 10px 30px rgba(0,0,0,0.06)",
+          "card-hover": "0 18px 38px rgba(255,77,77,0.14)",
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: #ff4d4d;
+    color: #ffffff;
+  }
+  :focus-visible {
+    outline: 2px solid #ff4d4d;
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>

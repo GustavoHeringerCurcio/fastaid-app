@@ -1,15 +1,53 @@
 <%- include('quick-help') %>
   </div>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var btn = document.getElementById('mobileMenuBtn');
+    document.addEventListener('DOMContentLoaded', function () {
+      var header = document.getElementById('siteHeader');
+      if (header) {
+        var atualizarSombra = function () {
+          header.classList.toggle('shadow-[0_10px_30px_rgba(0,0,0,0.06)]', window.scrollY > 8);
+        };
+        atualizarSombra();
+        window.addEventListener('scroll', atualizarSombra, { passive: true });
+      }
+
       var menu = document.getElementById('mobileMenu');
-      var close = document.getElementById('mobileMenuClose');
+      var panel = document.getElementById('mobileMenuPanel');
       var backdrop = document.getElementById('mobileMenuBackdrop');
-      if (!btn || !menu) return;
-      btn.addEventListener('click', function() { menu.classList.remove('hidden'); });
-      if (close) close.addEventListener('click', function() { menu.classList.add('hidden'); });
-      if (backdrop) backdrop.addEventListener('click', function() { menu.classList.add('hidden'); });
+      var openBtn = document.getElementById('mobileMenuBtn');
+      var closeBtn = document.getElementById('mobileMenuClose');
+
+      if (!menu || !panel || !backdrop || !openBtn) return;
+
+      function abrirMenu() {
+        menu.classList.remove('pointer-events-none');
+        menu.setAttribute('aria-hidden', 'false');
+        backdrop.classList.add('opacity-100');
+        panel.classList.remove('translate-x-full');
+        openBtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('overflow-hidden');
+      }
+
+      function fecharMenu() {
+        menu.classList.add('pointer-events-none');
+        menu.setAttribute('aria-hidden', 'true');
+        backdrop.classList.remove('opacity-100');
+        panel.classList.add('translate-x-full');
+        openBtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('overflow-hidden');
+      }
+
+      openBtn.addEventListener('click', abrirMenu);
+      if (closeBtn) closeBtn.addEventListener('click', fecharMenu);
+      backdrop.addEventListener('click', fecharMenu);
+
+      panel.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', fecharMenu);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') fecharMenu();
+      });
     });
   </script>
   <script src="/scripts/auth.js" defer></script>

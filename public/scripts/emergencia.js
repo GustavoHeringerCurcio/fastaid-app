@@ -6,12 +6,19 @@
 let metronomoInterval = null;
 let audioCtx = null;
 
+function definirEstadoBotao(btnElement, ativo) {
+  btnElement.classList.toggle("bg-emerald-600", ativo);
+  btnElement.classList.toggle("hover:bg-emerald-700", ativo);
+  btnElement.classList.toggle("bg-brand-500", !ativo);
+  btnElement.classList.toggle("hover:bg-brand-600", !ativo);
+}
+
 function alternarMetronomoRCP(btnElement) {
   if (metronomoInterval) {
     clearInterval(metronomoInterval);
     metronomoInterval = null;
     btnElement.innerText = "🥁 Iniciar Ritmo (110 BPM)";
-    btnElement.style.backgroundColor = "#d90429";
+    definirEstadoBotao(btnElement, false);
     return;
   }
 
@@ -20,7 +27,7 @@ function alternarMetronomoRCP(btnElement) {
   }
 
   btnElement.innerText = "⏹️ Parar Ritmo";
-  btnElement.style.backgroundColor = "#2b9348"; // Verde ativo
+  definirEstadoBotao(btnElement, true);
 
   const intervaloMs = (60 / 110) * 1000; // ~545ms por compressão
 
@@ -57,12 +64,12 @@ function alternarCronometroConvulsao(btnElement, displayElement) {
     clearInterval(cronometroInterval);
     cronometroInterval = null;
     btnElement.innerText = "▶️ Retomar Cronômetro";
-    btnElement.style.backgroundColor = "#d90429";
+    definirEstadoBotao(btnElement, false);
     return;
   }
 
   btnElement.innerText = "⏸️ Pausar Cronômetro";
-  btnElement.style.backgroundColor = "#2b9348";
+  definirEstadoBotao(btnElement, true);
 
   cronometroInterval = setInterval(() => {
     segundosCrise++;
@@ -85,7 +92,7 @@ function zerarCronometroConvulsao(btnElement, displayElement) {
   displayElement.innerText = "00:00";
   displayElement.style.color = "#2b2d42";
   btnElement.innerText = "⏱️ Iniciar Cronômetro";
-  btnElement.style.backgroundColor = "#d90429";
+  definirEstadoBotao(btnElement, false);
 }
 
 // ==========================================
@@ -121,19 +128,33 @@ function lerInstrucoesPagina(seletorContainer, btnElement) {
 // ==========================================
 // 4. LOCALIZADOR GPS ("ONDE ESTOU?")
 // ==========================================
+function textoLocalizacao(elementoId) {
+  return (
+    document.getElementById(elementoId + "-texto") ||
+    document.getElementById(elementoId)
+  );
+}
+
+function fecharLocalizacao(elementoId) {
+  const el = document.getElementById(elementoId);
+  if (el) el.classList.add("hidden");
+}
+
 function obterLocalizacaoEmergencia(elementoId) {
   const el = document.getElementById(elementoId);
   if (!el) return;
+
+  const texto = textoLocalizacao(elementoId);
 
   el.classList.remove("hidden");
   el.scrollIntoView({ behavior: "smooth", block: "center" });
 
   if (!navigator.geolocation) {
-    el.innerText = "⚠️ GPS não suportado neste navegador.";
+    texto.innerText = "⚠️ GPS não suportado neste navegador.";
     return;
   }
 
-  el.innerText = "📍 Obtendo localização exata pelo GPS...";
+  texto.innerText = "📍 Obtendo localização exata pelo GPS...";
 
   navigator.geolocation.getCurrentPosition(
     async (pos) => {
@@ -149,13 +170,13 @@ function obterLocalizacaoEmergencia(elementoId) {
         const bairro = end.suburb || end.neighbourhood || "";
         const cidade = end.city || end.town || end.village || "";
 
-        el.innerHTML = `<strong>📍 Informe este endereço ao SAMU (192):</strong><br><span class="text-base font-bold text-[#d90429]">${rua}, ${numero} — ${bairro}, ${cidade}</span><br><small class="text-gray-600">Coordenadas GPS: ${latitude.toFixed(5)}, ${longitude.toFixed(5)}</small>`;
+        texto.innerHTML = `<strong>📍 Informe este endereço ao SAMU (192):</strong><br><span class="text-base font-bold text-brand-700">${rua}, ${numero} — ${bairro}, ${cidade}</span><br><small class="text-[#777]">Coordenadas GPS: ${latitude.toFixed(5)}, ${longitude.toFixed(5)}</small>`;
       } catch (err) {
-        el.innerHTML = `<strong>📍 Coordenadas GPS para informar ao socorro:</strong><br>Latitude: ${latitude.toFixed(5)} | Longitude: ${longitude.toFixed(5)}`;
+        texto.innerHTML = `<strong>📍 Coordenadas GPS para informar ao socorro:</strong><br>Latitude: ${latitude.toFixed(5)} | Longitude: ${longitude.toFixed(5)}`;
       }
     },
     () => {
-      el.innerText = "⚠️ Permissão de localização negada. Ative o GPS do aparelho e tente novamente.";
+      texto.innerText = "⚠️ Permissão de localização negada. Ative o GPS do aparelho e tente novamente.";
     },
     { enableHighAccuracy: true, timeout: 10000 }
   );
