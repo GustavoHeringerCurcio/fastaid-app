@@ -1,4 +1,5 @@
 const usuarioModel = require("../models/usuarioModel");
+const session = require("../auth/session");
 
 function paginaLogin(req, res) {
   res.render("login", { titulo: "Login - Fast Aid" });
@@ -13,7 +14,16 @@ function login(req, res) {
   if (!resultado.ok) {
     return res.status(401).json(resultado);
   }
+
+  const token = session.criarSessao(resultado.usuario);
+  res.setHeader("Set-Cookie", session.cookieDeSessao(token));
   return res.json(resultado);
+}
+
+function logout(req, res) {
+  session.destruirSessao(req);
+  res.setHeader("Set-Cookie", session.cookieDeLogout());
+  return res.json({ ok: true });
 }
 
 function cadastrar(req, res) {
@@ -24,4 +34,4 @@ function cadastrar(req, res) {
   return res.status(201).json(resultado);
 }
 
-module.exports = { paginaLogin, paginaCadastro, login, cadastrar };
+module.exports = { paginaLogin, paginaCadastro, login, logout, cadastrar };
