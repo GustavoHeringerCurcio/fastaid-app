@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "node app.js"
+    "dev": "node app.js",
+    "build": "echo \"no build step\""
   },
   "repository": {
     "type": "git",
@@ -16,7 +17,7 @@
   "license": "ISC",
   "type": "commonjs",
   "engines": {
-    "node": "20.x"
+    "node": "26.x"
   },
   "bugs": {
     "url": "https://github.com/GustavoHeringerCurcio/fastaid-app/issues"

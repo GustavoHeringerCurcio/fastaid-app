@@ -2,8 +2,15 @@ const crypto = require("crypto");
 
 const COOKIE_NAME = "fastaid_session";
 const MAX_AGE_MS = 1000 * 60 * 60 * 8;
+const SECRET = process.env.SESSION_SECRET || "fastaid-dev-secret-change-me";
 
-const sessions = new Map();
+function base64url(valor) {
+  return Buffer.from(valor).toString("base64url");
+}
+
+function assinar(payload) {
+  return crypto.createHmac("sha256", SECRET).update(payload).digest("base64url");
+}
 
 function lerCookie(req, nome) {
   const header = req.headers.cookie || "";
@@ -21,34 +28,43 @@ function lerCookie(req, nome) {
   return null;
 }
 
-function obterSessao(req) {
-  const token = lerCookie(req, COOKIE_NAME);
-  if (!token) return null;
-
-  const sessao = sessions.get(token);
-  if (!sessao) return null;
-
-  if (sessao.expiraEm < Date.now()) {
-    sessions.delete(token);
-    return null;
-  }
-
-  sessao.expiraEm = Date.now() + MAX_AGE_MS;
-  return { token, usuario: sessao.usuario };
+function criarSessao(usuario) {
+  const payload = base64url(
+    JSON.stringify({ usuario, exp: Date.now() + MAX_AGE_MS })
+  );
+  return `${payload}.${assinar(payload)}`;
 }
 
-function criarSessao(usuario) {
-  const token = crypto.randomBytes(32).toString("hex");
-  sessions.set(token, {
-    usuario,
-    expiraEm: Date.now() + MAX_AGE_MS,
-  });
-  return token;
+function verificarToken(token) {
+  if (!token) return null;
+
+  const separador = token.lastIndexOf(".");
+  if (separador === -1) return null;
+
+  const payload = token.slice(0, separador);
+  const assinatura = token.slice(separador + 1);
+  const esperada = assinar(payload);
+
+  const a = Buffer.from(assinatura);
+  const b = Buffer.from(esperada);
+  if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) return null;
+
+  try {
+    const dados = JSON.parse(Buffer.from(payload, "base64url").toString());
+    if (!dados.exp || dados.exp < Date.now()) return null;
+    return dados.usuario;
+  } catch (err) {
+    return null;
+  }
+}
+
+function obterSessao(req) {
+  const usuario = verificarToken(lerCookie(req, COOKIE_NAME));
+  return usuario ? { usuario } : null;
 }
 
 function destruirSessao(req) {
-  const token = lerCookie(req, COOKIE_NAME);
-  if (token) sessions.delete(token);
+  return null;
 }
 
 function cookieDeSessao(token) {
