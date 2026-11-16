@@ -2,6 +2,8 @@ const usuarios = [
   { nome: "Administrador", email: "admin@gmail.com", telefone: "", senha: "admin" },
 ];
 
+const ALIASES = { admin: "admin@gmail.com" };
+
 function validar({ nome, email, telefone, senha, confirmarSenha }) {
   const erros = {};
 
@@ -56,7 +58,8 @@ function criar(dados) {
 
 function autenticar(email, senha) {
   const normalizado = (email || "").trim().toLowerCase();
-  const usuario = usuarios.find((u) => u.email === normalizado && u.senha === senha);
+  const emailBusca = ALIASES[normalizado] || normalizado;
+  const usuario = usuarios.find((u) => u.email === emailBusca && u.senha === senha);
   if (!usuario) {
     return { ok: false, mensagem: "E-mail ou senha inválidos" };
   }
