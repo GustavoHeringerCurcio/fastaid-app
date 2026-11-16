@@ -4,19 +4,24 @@ const email = document.getElementById("email");
 const telefone = document.getElementById("telefone");
 const senha = document.getElementById("senha");
 const confirmarSenha = document.getElementById("confirmarSenha");
+const submitButton = document.getElementById("cadastroSubmit");
 
 const campos = { nome, email, telefone, senha, confirmarSenha };
 
+function campoDe(input) {
+  return input.closest("[data-field]") || input.parentElement;
+}
+
 function setErro(input, mensagem) {
-  const span = input.parentElement.querySelector(".erro");
+  const span = campoDe(input).querySelector(".erro");
   if (span) span.textContent = mensagem;
-  input.classList.add("border-[#ff4d4d]", "shadow-[0_0_0_2px_rgba(255,77,77,0.2)]");
+  input.classList.add("border-brand-500", "ring-2", "ring-brand-500/15");
 }
 
 function limparErro(input) {
-  const span = input.parentElement.querySelector(".erro");
+  const span = campoDe(input).querySelector(".erro");
   if (span) span.textContent = "";
-  input.classList.remove("border-[#ff4d4d]", "shadow-[0_0_0_2px_rgba(255,77,77,0.2)]");
+  input.classList.remove("border-brand-500", "ring-2", "ring-brand-500/15");
 }
 
 function limparTodos() {
@@ -60,11 +65,38 @@ function validar() {
   return valido;
 }
 
+function definirCarregando(ativo) {
+  if (!submitButton) return;
+  submitButton.disabled = ativo;
+  submitButton.textContent = ativo ? "Cadastrando..." : "Cadastrar";
+}
+
+function configurarToggle(btn) {
+  const input = document.getElementById(btn.dataset.target);
+  if (!input) return;
+
+  btn.addEventListener("click", () => {
+    const mostrar = input.type === "password";
+    input.type = mostrar ? "text" : "password";
+    btn.setAttribute("aria-pressed", String(mostrar));
+    btn.setAttribute("aria-label", mostrar ? "Ocultar senha" : "Mostrar senha");
+
+    const olhoAberto = btn.querySelector(".eye-open");
+    const olhoFechado = btn.querySelector(".eye-closed");
+    if (olhoAberto) olhoAberto.classList.toggle("hidden", mostrar);
+    if (olhoFechado) olhoFechado.classList.toggle("hidden", !mostrar);
+  });
+}
+
+document.querySelectorAll("[data-toggle-password]").forEach(configurarToggle);
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   limparTodos();
 
   if (!validar()) return;
+
+  definirCarregando(true);
 
   let resultado;
   try {
@@ -82,6 +114,7 @@ form.addEventListener("submit", async (e) => {
     resultado = await response.json();
   } catch (err) {
     alert("Não foi possível conectar ao servidor");
+    definirCarregando(false);
     return;
   }
 
@@ -89,6 +122,7 @@ form.addEventListener("submit", async (e) => {
     Object.entries(resultado.erros || {}).forEach(([campo, mensagem]) => {
       if (campos[campo]) setErro(campos[campo], mensagem);
     });
+    definirCarregando(false);
     return;
   }
 

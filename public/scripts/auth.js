@@ -23,7 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
   if (navCadastroMobile) navCadastroMobile.classList.add("hidden");
   if (navLoginMobile) navLoginMobile.classList.add("hidden");
   if (navProfile) navProfile.classList.remove("hidden");
-  if (navProfileMobile) navProfileMobile.classList.remove("hidden");
+  if (navProfileMobile) {
+    navProfileMobile.classList.remove("hidden");
+    navProfileMobile.classList.add("flex");
+  }
 
   if (profilePic) profilePic.src = userData.profilePicture;
   if (profileEmail) profileEmail.textContent = userData.email;

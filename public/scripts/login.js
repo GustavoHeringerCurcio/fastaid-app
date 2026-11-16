@@ -17,6 +17,34 @@ document.addEventListener("DOMContentLoaded", () => {
   const emailInput = document.getElementById("email");
   const passwordInput = document.getElementById("password");
   const errorSpan = document.getElementById("loginError");
+  const submitButton = document.getElementById("loginSubmit");
+
+  function configurarToggle(btn) {
+    const input = document.getElementById(btn.dataset.target);
+    if (!input) return;
+
+    btn.addEventListener("click", () => {
+      const mostrar = input.type === "password";
+      input.type = mostrar ? "text" : "password";
+      btn.setAttribute("aria-pressed", String(mostrar));
+      btn.setAttribute("aria-label", mostrar ? "Ocultar senha" : "Mostrar senha");
+
+      const olhoAberto = btn.querySelector(".eye-open");
+      const olhoFechado = btn.querySelector(".eye-closed");
+      if (olhoAberto) olhoAberto.classList.toggle("hidden", mostrar);
+      if (olhoFechado) olhoFechado.classList.toggle("hidden", !mostrar);
+    });
+  }
+
+  document
+    .querySelectorAll("[data-toggle-password], #togglePassword")
+    .forEach(configurarToggle);
+
+  function definirCarregando(ativo) {
+    if (!submitButton) return;
+    submitButton.disabled = ativo;
+    submitButton.textContent = ativo ? "Entrando..." : "Entrar";
+  }
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -24,6 +52,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
+
+    if (!email || !password) {
+      errorSpan.textContent = "Preencha e-mail e senha.";
+      return;
+    }
+
+    definirCarregando(true);
 
     let resultado;
     try {
@@ -35,11 +70,13 @@ document.addEventListener("DOMContentLoaded", () => {
       resultado = await response.json();
     } catch (err) {
       errorSpan.textContent = "Não foi possível conectar ao servidor";
+      definirCarregando(false);
       return;
     }
 
     if (!resultado.ok) {
       errorSpan.textContent = resultado.mensagem || "E-mail ou senha inválidos";
+      definirCarregando(false);
       return;
     }
 
